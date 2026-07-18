@@ -3,24 +3,15 @@
 import { useEffect, useState } from "react";
 import { site, links } from "@/lib/data";
 import GithubHeatmap from "@/components/GithubHeatmap";
-
-// ── Roadmap ──────────────────────────────────────────────────────────────
-// This file currently renders only the nav + hero terminal (Day 1 goal:
-// a real, running site with your name on it). Each section below is a
-// stub — we build them one at a time on the days noted, and you write
-// the component code yourself with guidance rather than having it handed
-// to you.
-//
-//   Day 2–3   About       -> components/About.tsx        (reads `site`)
-//   Day 4–5   Skills      -> components/Skills.tsx        (reads `skills`)
-//   Day 6–8   Projects    -> components/Projects.tsx      (reads `projects`)
-//   Day 9–10  Experience  -> components/Experience.tsx    (git-log UI, reads `experience`)
-//   Day 11–13 Blog (MDX)  -> app/blog/[slug]/page.tsx     (reads `blogPosts`, adds MDX)
-//   Day 14    Research    -> components/Research.tsx      (reads `publications`)
-//   Day 15    Links       -> components/Links.tsx         (reads `links`)
-//   Day 16–18 Contact     -> app/api/contact/route.ts     (first backend route)
-//   Day 19+   Polish, DB-backed feature, CI/CD, deploy
-// ───────────────────────────────────────────────────────────────────────
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Blog from "@/components/Blog";
+import Research from "@/components/Research";
+import Links from "@/components/Links";
+import Contact from "@/components/Contact";
 
 const TERMINAL_LINES = [
   { kind: "k", text: "$ whoami" },
@@ -28,27 +19,29 @@ const TERMINAL_LINES = [
   { kind: "c", text: "# building toward: DSA · System Design · Distributed Infra" },
   { kind: "k", text: "$ cat focus.txt" },
   { kind: "v", text: site.tagline },
-  { kind: "tag", text: "[ status: in_progress — day 1 of 30 ]" },
+  { kind: "tag", text: "[ status: active — portfolio loaded successfully ]" },
 ] as const;
 
 function Hero() {
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [rendered, setRendered] = useState<{ kind: string; text: string }[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [commandLogs, setCommandLogs] = useState<{ kind: string; text: string }[]>([]);
 
   useEffect(() => {
     if (lineIndex >= TERMINAL_LINES.length) return;
     const line = TERMINAL_LINES[lineIndex];
 
     if (charIndex <= line.text.length) {
-      const timeout = setTimeout(() => setCharIndex((c) => c + 1), 18 + Math.random() * 22);
+      const timeout = setTimeout(() => setCharIndex((c) => c + 1), 10 + Math.random() * 12);
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {
         setRendered((r) => [...r, line]);
         setLineIndex((i) => i + 1);
         setCharIndex(0);
-      }, 220);
+      }, 100);
       return () => clearTimeout(timeout);
     }
   }, [lineIndex, charIndex]);
@@ -59,15 +52,44 @@ function Hero() {
   const colorFor = (kind: string) =>
     kind === "k" ? "text-cyan" : kind === "c" ? "text-faint" : kind === "tag" ? "text-violet" : "text-text";
 
+  const handleCommandSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cmd = inputValue.trim().toLowerCase();
+    if (!cmd) return;
+
+    const newLogs = [...commandLogs, { kind: "k", text: `visitor@keshav-portfolio:~$ ${inputValue}` }];
+
+    if (cmd === "help") {
+      newLogs.push({ kind: "c", text: "Available commands: about | skills | projects | experience | education | blog | research | links | contact | clear | help" });
+    } else if (["about", "skills", "projects", "experience", "education", "blog", "research", "links", "contact"].includes(cmd)) {
+      newLogs.push({ kind: "v", text: `Scrolling to #${cmd}...` });
+      const element = document.getElementById(cmd);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (cmd === "clear") {
+      setCommandLogs([]);
+      setInputValue("");
+      return;
+    } else {
+      newLogs.push({ kind: "tag", text: `bash: command not found: ${cmd}. Type 'help' to see list of commands.` });
+    }
+
+    setCommandLogs(newLogs);
+    setInputValue("");
+  };
+
+  const isTypingDone = lineIndex >= TERMINAL_LINES.length;
+
   return (
     <div className="rounded-lg border border-border bg-surface overflow-hidden">
       <div className="flex items-center gap-2 px-4 py-2.5 bg-surface2 border-b border-border">
         <span className="w-2.5 h-2.5 rounded-full bg-[#FF6058]" />
         <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
         <span className="w-2.5 h-2.5 rounded-full bg-[#28C93F]" />
-        <span className="ml-2 font-mono text-[11px] text-faint">bash — 80x24</span>
+        <span className="ml-2 font-mono text-[11px] text-faint">visitor@iitr:~$</span>
       </div>
-      <div className="px-6 py-6 font-mono text-sm leading-8">
+      <div className="px-6 py-6 font-mono text-xs leading-7 select-none">
         {rendered.map((l, i) => (
           <div key={i} className={colorFor(l.kind)}>
             {l.text}
@@ -79,12 +101,34 @@ function Hero() {
             <span className="inline-block w-2 h-4 bg-amber align-middle animate-blink" />
           </div>
         )}
+
+        {isTypingDone && (
+          <>
+            {commandLogs.map((log, i) => (
+              <div key={i} className={colorFor(log.kind)}>
+                {log.text}
+              </div>
+            ))}
+            
+            <form onSubmit={handleCommandSubmit} className="flex items-center gap-1.5 text-text mt-1">
+              <span className="text-cyan">visitor@keshav-portfolio:~$</span>
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                className="flex-1 bg-transparent border-none outline-none text-text text-xs focus:ring-0 p-0 m-0 font-mono"
+                autoFocus
+                placeholder="type 'help'..."
+              />
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-const NAV_ITEMS = ["about", "skills", "projects", "experience", "blog", "research", "contact"];
+const NAV_ITEMS = ["about", "skills", "projects", "experience", "education", "blog", "research", "links", "contact"];
 
 export default function Home() {
   return (
@@ -121,26 +165,17 @@ export default function Home() {
           >
             <span className="text-cyan">in</span> Connect on LinkedIn
           </a>
-          {/*
-            No live LinkedIn stats here on purpose — LinkedIn doesn't expose
-            a public API for personal profile stats, and scraping would
-            violate their ToS. A badge/link is the honest option.
-          */}
         </section>
 
-        {/*
-          Sections below are intentionally not built yet — see the roadmap
-          comment at the top of this file. Build each one as its own
-          component in /components, import it here, and remove the
-          matching placeholder <div>.
-        */}
-        <PlaceholderSection id="about" command="cat about.md" day="2–3" />
-        <PlaceholderSection id="skills" command="ls -la skills/" day="4–5" />
-        <PlaceholderSection id="projects" command="ls projects/" day="6–8" />
-        <PlaceholderSection id="experience" command="git log --graph --oneline" day="9–10" />
-        <PlaceholderSection id="blog" command="ls blog/*.md" day="11–13" />
-        <PlaceholderSection id="research" command="cat research.bib" day="14" />
-        <PlaceholderSection id="contact" command="./send-message.sh" day="16–18" />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Education />
+        <Blog />
+        <Research />
+        <Links />
+        <Contact />
       </main>
 
       <footer className="text-center font-mono text-[11px] text-faint border-t border-border py-10 mt-16 space-y-2">
@@ -151,18 +186,5 @@ export default function Home() {
         </div>
       </footer>
     </>
-  );
-}
-
-function PlaceholderSection({ id, command, day }: { id: string; command: string; day: string }) {
-  return (
-    <section id={id} className="my-8 rounded-lg border border-dashed border-border p-6">
-      <div className="font-mono text-xs text-faint mb-2">
-        <span className="text-amber">$</span> {command}
-      </div>
-      <div className="font-mono text-xs text-muted">
-        not built yet — scheduled for day {day} of the plan
-      </div>
-    </section>
   );
 }

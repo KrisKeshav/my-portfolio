@@ -1,16 +1,11 @@
-// All portfolio content lives here as typed data — "content as code".
-// Edit this file to update what appears on the site; components (built
-// in later days) will just read from these exports.
-
 export const site = {
   name: "Kris Keshav",
   tagline:
     "Software engineer building toward DSA, system design, and distributed infrastructure — learning in public.",
   location: "Roorkee, India",
-  // NOTE: verify this — the resume PDF extracted this with a stray space
-  // ("kris k@ee.iitr.ac.in"), likely meant to be kris_k@ee.iitr.ac.in
-  email: "kris_k@ee.iitr.ac.in",
+  email: "kriskeshv99@gmail.com",
   phone: "+91-7764951720",
+  bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, and AI. I have hands-on experience building full-stack applications, designing robust APIs, and implementing physics-informed machine learning models. I enjoy competitive programming and tackling complex system design challenges.",
 };
 
 export const links = {
@@ -45,7 +40,7 @@ export const education: Education[] = [
 ];
 
 export type Experience = {
-  hash: string; // fake short commit hash, purely cosmetic for the git-log UI
+  hash: string;
   role: string;
   org: string;
   location: string;
@@ -62,8 +57,8 @@ export const experience: Experience[] = [
     dates: "May 2026 – Jul 2026",
     bullets: [
       "Reduced manual PMO effort by automating resource tracking, allocation, and escalation workflows end-to-end.",
-      "Incorporated authentication and agent integration with a multi-portal UI, replacing manual spreadsheet tracking.",
-      "Developed a custom multi-lingual translator from scratch with dictionaries containing 10,000+ words.",
+      "Incorporated authentication, agents integration with multi-portal UI replacing manual spreadsheet tracking.",
+      "Also developed a Custom Multi-Lingual translator from scratch with dictionaries containing 34000+ words.",
     ],
   },
 ];
@@ -83,11 +78,12 @@ export const projects: Project[] = [
     description:
       "OpenEnv-based cyber-physical security framework for detecting and classifying False Data Injection (FDI) attacks on SRF-PLL controlled grid-connected inverters.",
     bullets: [
+      "Built an OpenEnv-based cyber-physical security framework for detecting and classifying False Data Injection (FDI) attacks on SRF-PLL controlled grid-connected inverters.",
       "Combined physics-informed anomaly detection, heuristic reasoning, and LLM (Qwen) assisted decision making.",
-      "Evaluated detection across sinusoidal, ramp, pulse, and stealthy attack scenarios — 99.0% detection score and 87.2% multi-attack classification score.",
+      "Evaluated attack detection across sinusoidal, ramp, pulse, and stealthy attack scenarios, achieving 99.0% detection score and 87.2% multi-attack classification score.",
     ],
     tags: ["Python", "FastAPI", "Docker", "OpenEnv"],
-    github: "", // add your repo link
+    github: "https://github.com/KrisKeshav",
   },
   {
     name: "Credit Card Default Prediction",
@@ -95,19 +91,35 @@ export const projects: Project[] = [
     description:
       "Credit risk classification model optimizing F2-score for high-recall decisions.",
     bullets: [
-      "Handled class imbalance using SMOTE and achieved an F2-score of 0.60 with tuned LightGBM.",
+      "Built a credit risk classification model optimizing F2-score for high-recall decisions.",
+      "Handled class imbalance using SMOTE and achieved F2-score of 0.60 with tuned LightGBM.",
     ],
     tags: ["LightGBM", "SMOTE", "Python"],
-    github: "",
+    github: "https://github.com/KrisKeshav",
   },
   {
     name: "Smart Vision Quality Control System",
     dates: "Oct 2024 – Dec 2024",
     description:
       "AI-based computer vision system for automated product classification and defect detection.",
-    bullets: ["Finished 4th nationally in Flipkart GRID 6.0 with this solution."],
+    bullets: [
+      "Developed an AI-based computer vision system for automated product classification and defect detection.",
+      "Finished 4th nationally in Flipkart GRID 6.0 with this solution.",
+    ],
     tags: ["Computer Vision", "LLM Pipelines"],
-    github: "",
+    github: "https://github.com/KrisKeshav",
+  },
+  {
+    name: "Text-to-Image Generation",
+    dates: "May 2024 – Jun 2024",
+    description:
+      "Modular, local-inference pipeline using fine-tuned Stable Diffusion v1.5 and Hugging Face Diffusers.",
+    bullets: [
+      "Developed a modular, local-inference pipeline using fine-tuned Stable Diffusion v1.5 and Hugging Face Diffusers.",
+      "Built an interactive Streamlit dashboard and containerized the setup using Docker for reproducible deployment across different environments.",
+    ],
+    tags: ["Stable Diffusion", "Hugging Face", "Docker"],
+    github: "https://github.com/KrisKeshav",
   },
 ];
 
@@ -127,11 +139,11 @@ export const publications: Publication[] = [
     description:
       "Co-authored a physics-guided diffusion framework using DDIM for scalable ACOPF synthetic data generation.",
     bullets: [
-      "Designed constrained sampling with gradient-based physical corrections for physically consistent operating points.",
-      "Up to 20× faster inference than standard DDPM diffusion while preserving statistical fidelity across IEEE 6-, 24-, and 118-bus systems.",
+      "Designed constrained sampling with gradient-based physical corrections, enabling generation of physically consistent operating points.",
+      "Achieved up to 20× faster inference compared to standard DDPM diffusion while preserving statistical fidelity across IEEE 6-, 24-, and 118-bus systems.",
     ],
-    github: "", // add your repo link
-    arxiv: "", // add your arXiv link
+    github: "https://github.com/KrisKeshav",
+    arxiv: "https://arxiv.org",
   },
 ];
 
@@ -139,12 +151,12 @@ export const awards: string[] = [
   "Ranked 4th in Flipkart Grid 6.0 (Team Event)",
   "East Zone Rank 4 in IQ Challenge (Kshitij 2022, IIT Kharagpur)",
   "AIR 18 in Technothlon'19 (Juniors)",
+  "Global Rank 801 in Codeforces Round 1032 Div 3",
 ];
 
 export const skills = {
   currentStack: ["C++", "Python", "MySQL", "Git", "GitHub"],
   tools: ["VS Code", "Google Colab", "Kaggle", "Hugging Face", "Roboflow"],
-  // the tracks you're deliberately building up per your learning plan
   highPriority: ["Data Structures & Algorithms", "System Design", "SQL"],
   differentiator: ["Kafka", "Kubernetes", "Rust"],
 };
@@ -171,7 +183,7 @@ export const positions: Position[] = [
     dates: "Mar 2024 – Present",
     bullets: [
       "Worked on AI/ML robotics projects and contributed to model deployment and testing.",
-      "Participated in Flipkart Grid 6.0 (4th position) and Srishti 2025 (1st position).",
+      "Participated in Flipkart Grid 6.0 and Srishti 2025 (1st position).",
     ],
   },
   {
@@ -182,8 +194,6 @@ export const positions: Position[] = [
   },
 ];
 
-// Blog posts will move to MDX files once we set that up (Day 11) —
-// this array is just a placeholder so the homepage has something to render.
 export type BlogPostPreview = {
   slug: string;
   title: string;
@@ -198,5 +208,12 @@ export const blogPosts: BlogPostPreview[] = [
     date: "2026-07-16",
     excerpt:
       "Why I'm building my portfolio as the learning project for the next 30 days, and the stack decisions behind it.",
+  },
+  {
+    slug: "custom-git-log-timeline",
+    title: "Writing a custom git-log SVG timeline in React",
+    date: "2026-07-18",
+    excerpt:
+      "How I built a visual, responsive git-branch graph for my experience list using pure SVG pathing and React state.",
   },
 ];
