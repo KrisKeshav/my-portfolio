@@ -48,7 +48,7 @@ export default function Education() {
             <span className="w-3 h-3 rounded-full bg-[#FF6058] shadow-sm" />
             <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm" />
             <span className="w-3 h-3 rounded-full bg-[#28C93F] shadow-sm" />
-            <span className="ml-3 font-semibold tracking-wide">git log --grep="education"</span>
+            <span className="ml-3 font-semibold tracking-wide">git log --grep=&quot;education&quot;</span>
           </div>
           <span className="bg-amber/10 text-amber px-2 py-0.5 rounded-md border border-amber/20">3 commits</span>
         </div>

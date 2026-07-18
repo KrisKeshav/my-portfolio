@@ -46,7 +46,7 @@ export default function Experience() {
             <span className="w-3 h-3 rounded-full bg-[#FF6058] shadow-sm" />
             <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm" />
             <span className="w-3 h-3 rounded-full bg-[#28C93F] shadow-sm" />
-            <span className="ml-3 font-semibold tracking-wide">git log --grep="experience"</span>
+            <span className="ml-3 font-semibold tracking-wide">git log --grep=&quot;experience&quot;</span>
           </div>
           <span className="bg-cyan/10 text-cyan px-2 py-0.5 rounded-md border border-cyan/20">3 commits</span>
         </div>
