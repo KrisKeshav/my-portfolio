@@ -1,9 +1,9 @@
 export const site = {
   name: "Kris Keshav",
   tagline:
-    "Software engineer building toward DSA, system design, and distributed infrastructure — learning in public.",
+    "Aspiring Software engineer building toward DSA, system design, and exploring distributed infrastructure — learning in public.",
   location: "Roorkee, India",
-  email: "kriskeshv99@gmail.com",
+  email: "kris_k@ee.iitr.ac.in",
   phone: "+91-7764951720",
   bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, and AI. I have hands-on experience building full-stack applications, designing robust APIs, and implementing physics-informed machine learning models. I enjoy competitive programming and tackling complex system design challenges.",
 };

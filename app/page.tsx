@@ -132,59 +132,79 @@ const NAV_ITEMS = ["about", "skills", "projects", "experience", "education", "bl
 
 export default function Home() {
   return (
-    <>
-      <nav className="sticky top-0 z-50 backdrop-blur bg-bg/90 border-b border-border">
-        <div className="max-w-3xl mx-auto flex items-center justify-between px-6 py-3.5">
-          <div className="font-mono font-semibold text-sm text-amber flex items-center gap-2">
-            root@portfolio
-            <span className="w-2 h-4 bg-amber animate-blink" />
+    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <div className="lg:flex lg:justify-between lg:gap-16">
+        
+        {/* Left Column (Sticky Sidebar on Desktop) */}
+        <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[45%] lg:flex-col lg:justify-between lg:py-24">
+          <div>
+            <div className="font-mono font-semibold text-2xl text-amber flex items-center gap-2 mb-10">
+              root@portfolio
+              <span className="w-2.5 h-6 bg-amber animate-blink" />
+            </div>
+            
+            <Hero />
+            
+            <nav className="mt-12 hidden lg:block">
+              <ul className="flex flex-col gap-5 font-mono text-sm">
+                {NAV_ITEMS.map((item) => (
+                  <li key={item}>
+                    <a href={`#${item}`} className="group flex items-center gap-4 text-muted hover:text-text no-underline">
+                      <span className="w-8 h-[1px] bg-border group-hover:w-16 group-hover:bg-cyan transition-all duration-300" />
+                      <span className="text-faint group-hover:text-cyan transition-colors">./</span>
+                      <span className="group-hover:tracking-wider transition-all duration-300">{item}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
-          <div className="hidden sm:flex gap-5 font-mono text-xs">
-            {NAV_ITEMS.map((item) => (
-              <a key={item} href={`#${item}`} className="text-muted hover:text-text no-underline">
-                <span className="text-faint">./</span>
-                {item}
-              </a>
-            ))}
+
+          {/* Social Links on Desktop Sidebar */}
+          <div className="mt-12 lg:mt-0 flex items-center gap-6 font-mono text-sm text-faint">
+            <a href={links.github} target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan/50" /> GitHub
+            </a>
+            <a href={links.linkedin} target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan/50" /> LinkedIn
+            </a>
           </div>
-        </div>
-      </nav>
+        </header>
 
-      <main className="max-w-3xl mx-auto px-6">
-        <section id="hero" className="my-4">
-          <Hero />
-        </section>
+        {/* Right Column (Scrollable Content) */}
+        <main className="pt-24 lg:w-[55%] lg:py-24 flex flex-col gap-24">
+          
+          <section id="activity" className="scroll-mt-24">
+            <GithubHeatmap />
+            <a
+              href={links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl border border-border/80 bg-surface/50 backdrop-blur-sm px-4 py-2.5 font-mono text-xs text-muted hover:text-text hover:border-faint hover:bg-surface/80 no-underline transition-all shadow-sm"
+            >
+              <span className="text-cyan font-bold">in</span> Connect on LinkedIn
+            </a>
+          </section>
 
-        <section id="activity" className="my-8">
-          <GithubHeatmap />
-          <a
-            href={links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-4 py-2.5 font-mono text-xs text-muted hover:text-text hover:border-faint no-underline"
-          >
-            <span className="text-cyan">in</span> Connect on LinkedIn
-          </a>
-        </section>
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Education />
+          <Blog />
+          <Research />
+          <Links />
+          <Contact />
 
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Education />
-        <Blog />
-        <Research />
-        <Links />
-        <Contact />
-      </main>
-
-      <footer className="text-center font-mono text-[11px] text-faint border-t border-border py-10 mt-16 space-y-2">
-        <div>built with $CURIOSITY, one commit a day</div>
-        <div>
-          This site logs basic visit analytics (page, approximate location, time).
-          No cookies, no personal profile stored.
-        </div>
-      </footer>
-    </>
+          <footer className="text-left font-mono text-xs text-faint py-10 space-y-3 border-t border-border/50">
+            <div className="text-muted">built with <span className="text-amber">$CURIOSITY</span>, one commit a day</div>
+            <div className="leading-relaxed">
+              This site logs basic visit analytics (page, approximate location, time).
+              No cookies, no personal profile stored.
+            </div>
+          </footer>
+        </main>
+      </div>
+    </div>
   );
 }
