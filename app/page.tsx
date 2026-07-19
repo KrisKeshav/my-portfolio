@@ -82,14 +82,14 @@ function Hero() {
   const isTypingDone = lineIndex >= TERMINAL_LINES.length;
 
   return (
-    <div className="rounded-lg border border-border bg-surface overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-surface2 border-b border-border">
-        <span className="w-2.5 h-2.5 rounded-full bg-[#FF6058]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-[#28C93F]" />
+    <div className="rounded-2xl border border-border/80 bg-surface/50 backdrop-blur-sm overflow-hidden shadow-sm h-full flex flex-col hover:shadow-md transition-shadow duration-300">
+      <div className="flex items-center gap-2 px-4 py-3 bg-surface2/80 border-b border-border/80">
+        <span className="w-3 h-3 rounded-full bg-[#FF6058] shadow-sm" />
+        <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm" />
+        <span className="w-3 h-3 rounded-full bg-[#28C93F] shadow-sm" />
         <span className="ml-2 font-mono text-[11px] text-faint">visitor@iitr:~$</span>
       </div>
-      <div className="px-6 py-6 font-mono text-xs leading-7 select-none">
+      <div className="px-6 py-8 font-mono text-sm leading-8 select-none flex-1 overflow-y-auto">
         {rendered.map((l, i) => (
           <div key={i} className={colorFor(l.kind)}>
             {l.text}
@@ -98,7 +98,7 @@ function Hero() {
         {current && (
           <div className={colorFor(current.kind)}>
             {currentSlice}
-            <span className="inline-block w-2 h-4 bg-amber align-middle animate-blink" />
+            <span className="inline-block w-2.5 h-5 bg-amber align-middle animate-blink" />
           </div>
         )}
 
@@ -110,13 +110,13 @@ function Hero() {
               </div>
             ))}
             
-            <form onSubmit={handleCommandSubmit} className="flex items-center gap-1.5 text-text mt-1">
+            <form onSubmit={handleCommandSubmit} className="flex items-center gap-1.5 text-text mt-2">
               <span className="text-cyan">visitor@keshav-portfolio:~$</span>
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="flex-1 bg-transparent border-none outline-none text-text text-xs focus:ring-0 p-0 m-0 font-mono"
+                className="flex-1 bg-transparent border-none outline-none text-text text-sm focus:ring-0 p-0 m-0 font-mono"
                 autoFocus
                 placeholder="type 'help'..."
               />
@@ -132,79 +132,89 @@ const NAV_ITEMS = ["about", "skills", "projects", "experience", "education", "bl
 
 export default function Home() {
   return (
-    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
-      <div className="lg:flex lg:justify-between lg:gap-16">
+    <div className="mx-auto min-h-screen max-w-[1400px] p-4 md:p-6 lg:p-8">
+      {/* Top Navbar */}
+      <nav className="mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl border border-border/80 bg-surface/50 backdrop-blur-sm p-5 px-8 shadow-sm">
+        <div className="font-mono font-bold text-xl text-amber flex items-center gap-2">
+          root@portfolio
+          <span className="w-2.5 h-5 bg-amber animate-blink" />
+        </div>
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono text-sm">
+          {NAV_ITEMS.map((item) => (
+            <a key={item} href={`#${item}`} className="text-muted hover:text-cyan no-underline transition-colors font-medium">
+              ./{item}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {/* BENTO GRID */}
+      <main className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 auto-rows-min gap-4 md:gap-6">
         
-        {/* Left Column (Sticky Sidebar on Desktop) */}
-        <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[45%] lg:flex-col lg:justify-between lg:py-24">
-          <div>
-            <div className="font-mono font-semibold text-2xl text-amber flex items-center gap-2 mb-10">
-              root@portfolio
-              <span className="w-2.5 h-6 bg-amber animate-blink" />
-            </div>
-            
-            <Hero />
-            
-            <nav className="mt-12 hidden lg:block">
-              <ul className="flex flex-col gap-5 font-mono text-sm">
-                {NAV_ITEMS.map((item) => (
-                  <li key={item}>
-                    <a href={`#${item}`} className="group flex items-center gap-4 text-muted hover:text-text no-underline">
-                      <span className="w-8 h-[1px] bg-border group-hover:w-16 group-hover:bg-cyan transition-all duration-300" />
-                      <span className="text-faint group-hover:text-cyan transition-colors">./</span>
-                      <span className="group-hover:tracking-wider transition-all duration-300">{item}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+        {/* HERO TILE */}
+        <div className="md:col-span-2 xl:col-span-2 xl:row-span-2 h-full min-h-[400px] xl:min-h-0">
+          <Hero />
+        </div>
 
-          {/* Social Links on Desktop Sidebar */}
-          <div className="mt-12 lg:mt-0 flex items-center gap-6 font-mono text-sm text-faint">
-            <a href={links.github} target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan/50" /> GitHub
-            </a>
-            <a href={links.linkedin} target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan/50" /> LinkedIn
-            </a>
-          </div>
-        </header>
-
-        {/* Right Column (Scrollable Content) */}
-        <main className="pt-24 lg:w-[55%] lg:py-24 flex flex-col gap-24">
-          
-          <section id="activity" className="scroll-mt-24">
-            <GithubHeatmap />
-            <a
-              href={links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl border border-border/80 bg-surface/50 backdrop-blur-sm px-4 py-2.5 font-mono text-xs text-muted hover:text-text hover:border-faint hover:bg-surface/80 no-underline transition-all shadow-sm"
-            >
-              <span className="text-cyan font-bold">in</span> Connect on LinkedIn
-            </a>
-          </section>
-
+        {/* ABOUT TILE */}
+        <div id="about" className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
           <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Education />
-          <Blog />
-          <Research />
-          <Links />
-          <Contact />
+        </div>
 
-          <footer className="text-left font-mono text-xs text-faint py-10 space-y-3 border-t border-border/50">
-            <div className="text-muted">built with <span className="text-amber">$CURIOSITY</span>, one commit a day</div>
-            <div className="leading-relaxed">
-              This site logs basic visit analytics (page, approximate location, time).
-              No cookies, no personal profile stored.
-            </div>
-          </footer>
-        </main>
-      </div>
+        {/* ACTIVITY TILE */}
+        <div id="activity" className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+          <GithubHeatmap />
+        </div>
+
+        {/* SKILLS TILE */}
+        <div id="skills" className="md:col-span-2 xl:col-span-4 h-full scroll-mt-24">
+          <Skills />
+        </div>
+
+        {/* PROJECTS TILE */}
+        <div id="projects" className="md:col-span-2 xl:col-span-4 h-full scroll-mt-24">
+          <Projects />
+        </div>
+
+        {/* EXPERIENCE TILE */}
+        <div id="experience" className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+          <Experience />
+        </div>
+
+        {/* EDUCATION TILE */}
+        <div id="education" className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+          <Education />
+        </div>
+
+        {/* BLOG TILE */}
+        <div id="blog" className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+          <Blog />
+        </div>
+        
+        {/* RESEARCH TILE */}
+        <div id="research" className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+          <Research />
+        </div>
+
+        {/* LINKS TILE */}
+        <div id="links" className="md:col-span-1 xl:col-span-2 h-full scroll-mt-24">
+          <Links />
+        </div>
+
+        {/* CONTACT TILE */}
+        <div id="contact" className="md:col-span-1 xl:col-span-2 h-full scroll-mt-24">
+          <Contact />
+        </div>
+
+      </main>
+
+      <footer className="text-center font-mono text-sm text-faint py-12 mt-12 space-y-3">
+        <div className="text-muted">built with <span className="text-amber">$CURIOSITY</span>, one commit a day</div>
+        <div>
+          This site logs basic visit analytics (page, approximate location, time).
+          No cookies, no personal profile stored.
+        </div>
+      </footer>
     </div>
   );
 }

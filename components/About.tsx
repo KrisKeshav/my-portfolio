@@ -2,7 +2,7 @@ import { site } from "@/lib/data";
 
 export default function About() {
   return (
-    <section id="about" className="my-12 scroll-mt-20">
+    <section className="h-full">
       <div className="rounded-lg border border-border bg-surface overflow-hidden">
         <div className="flex items-center justify-between px-4 py-2.5 bg-surface2 border-b border-border font-mono text-xs text-faint">
           <div className="flex items-center gap-2">
