@@ -83,7 +83,7 @@ export const projects: Project[] = [
       "Evaluated attack detection across sinusoidal, ramp, pulse, and stealthy attack scenarios, achieving 99.0% detection score and 87.2% multi-attack classification score.",
     ],
     tags: ["Python", "FastAPI", "Docker", "OpenEnv"],
-    github: "https://github.com/KrisKeshav",
+    github: "https://github.com/KrisKeshav/PLL-Cyberattack-Detection-OpenEnv",
   },
   {
     name: "Credit Card Default Prediction",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       "Handled class imbalance using SMOTE and achieved F2-score of 0.60 with tuned LightGBM.",
     ],
     tags: ["LightGBM", "SMOTE", "Python"],
-    github: "https://github.com/KrisKeshav",
+    github: "https://github.com/KrisKeshav/Credit-Card-Default-Prediction-using-Classification-and-Risk-Based-Techniques",
   },
   {
     name: "Smart Vision Quality Control System",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       "Built an interactive Streamlit dashboard and containerized the setup using Docker for reproducible deployment across different environments.",
     ],
     tags: ["Stable Diffusion", "Hugging Face", "Docker"],
-    github: "https://github.com/KrisKeshav",
+    github: "https://github.com/KrisKeshav/Text_to_Image_generator",
   },
 ];
 
@@ -142,8 +142,8 @@ export const publications: Publication[] = [
       "Designed constrained sampling with gradient-based physical corrections, enabling generation of physically consistent operating points.",
       "Achieved up to 20× faster inference compared to standard DDPM diffusion while preserving statistical fidelity across IEEE 6-, 24-, and 118-bus systems.",
     ],
-    github: "https://github.com/KrisKeshav",
-    arxiv: "https://arxiv.org",
+    github: "https://github.com/PSquare-Lab/DDIM_OPF",
+    arxiv: "https://arxiv.org/abs/2602.03020",
   },
 ];
 
