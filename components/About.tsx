@@ -1,24 +1,22 @@
 import { site } from "@/lib/data";
+import Image from "next/image";
+import TerminalCard from "./TerminalCard";
 
 export default function About() {
   return (
     <section className="h-full">
-      <div className="rounded-lg border border-border bg-surface overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-2.5 bg-surface2 border-b border-border font-mono text-xs text-faint">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF6058]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28C93F]" />
-            <span className="ml-2">cat about.md</span>
-          </div>
-          <span>UTF-8</span>
-        </div>
+      <TerminalCard command="cat about.md" label="UTF-8">
         <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left space-y-4 font-mono">
-            <div className="relative group w-32 h-32 rounded-lg border border-border bg-surface2 flex items-center justify-center overflow-hidden shadow-inner select-none">
-              <div className="absolute inset-0 bg-gradient-to-tr from-amberDim/20 to-violet/10 opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
-              <span className="text-4xl text-amber font-bold font-mono group-hover:scale-110 transition-transform duration-300">KK</span>
-              <div className="absolute bottom-1 right-2 text-[9px] text-faint">v1.0.0</div>
+            <div className="relative group w-32 h-32 rounded-lg border border-border bg-surface2 overflow-hidden shadow-inner select-none">
+              <Image
+                src="/Kris_picture_2.jpeg"
+                alt="Kris Keshav"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                sizes="128px"
+                priority
+              />
             </div>
             <div className="space-y-1">
               <h2 className="text-lg font-bold text-text font-mono">{site.name}</h2>
@@ -62,7 +60,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
+      </TerminalCard>
     </section>
   );
 }

@@ -1,0 +1,436 @@
+%-------------------------
+% Resume in Latex
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=MidnightBlue, citecolor=black]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{-2pt}\item
+\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+\textbf{#1} & #2 \\
+\textit{\small#3} & \textit{\small #4} \\
+\end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+\item
+\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+\small#1 & #2 \\
+\end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+
+\begin{center}
+\textbf{\Huge \scshape Kris Keshav} \\ \vspace{1pt}
+\small +91-7764951720 $|$
+\href{mailto:kris_k@ee.iitr.ac.in}{\underline{kris\_k@ee.iitr.ac.in}} $|$
+\href{https://linkedin.com/in/yourprofile}{\underline{LinkedIn Profile}} $|$
+\href{https://github.com/yourgithub}{\underline{Github Profile}} $|$
+Codeforces:
+\href{https://codeforces.com/profile/Kris_k19}{\underline{Kris\_k19}}
+\end{center}
+
+%-----------EDUCATION-----------
+
+\section{Education}
+
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Indian Institute of Technology Roorkee}
+{Roorkee, India}
+{B.Tech. in Electrical Engineering (CGPA: 8.146)}
+{2023 -- Present}
+
+\resumeSubheading
+{D.A.V Public School, Patna (CBSE)}
+{Patna, India}
+{Intermediate (Class XII) -- 95.80\%}
+{2022}
+
+\resumeSubheading
+{D.A.V Public School, Patna (CBSE)}
+{Patna, India}
+{Matriculate (Class X) -- 97.40\%}
+{2020}
+
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Accenture}{May 2026 -- Jul 2026}
+{Software Engineering Intern}{Bengaluru, India}
+\resumeItemListStart
+\resumeItem{Reduced manual PMO effort by automating resource tracking, allocation, and escalation workflows end-to-end.}
+\resumeItem{Incorporated authentication, agents integration with multi-portal UI replacing manual spreadsheet tracking}
+\resumeItem{Also developed a Custom Multi-Lingual translator from scratch with dictionaries containing 34000+ words.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{Fast Diffusion with Physics-Correction for ACOPF} $|$ \emph{Diffusion Models}}{Accepted at IEEE SEFET 2026}
+\resumeItemListStart
+\resumeItem{Co-authored a physics-guided diffusion framework using DDIM for scalable ACOPF synthetic data generation.}
+\resumeItem{Designed constrained sampling with gradient-based physical corrections, enabling generation of physically consistent operating points.}
+\resumeItem{Achieved up to \textbf{20× faster inference} compared to standard DDPM diffusion while preserving statistical fidelity across IEEE 6-, 24-, and 118-bus systems.}Implementation released at: \href{https://github.com/PSquare-Lab/DDIM_OPF}{GitHub Repository}. Preprint: \href{https://arxiv.org/abs/2602.03020}{arXiv}.
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+
+\section{Projects}
+
+\resumeProjectHeading
+{\textbf{Microservice Observability Pipeline} $|$ 
+\emph{Python, FastAPI, Docker, Kubernetes, Kafka, Grafana}}{}
+\resumeItemListStart
+    \resumeItem{Built a local, fully open-source observability pipeline to trace and debug failing requests across distributed microservices in real time.}
+    \resumeItem{Designed an event-driven log pipeline using Kafka to decouple log ingestion from processing, enabling multiple independent consumers (Loki for storage, custom anomaly detection).}
+    \resumeItem{Implemented distributed tracing with OpenTelemetry and Jaeger, and orchestrated the multi-component stack (3 microservices, Fluent Bit, Kafka, Loki, Jaeger, Grafana) on Kubernetes.}Code: \href{https://github.com/your-username/microservice-observability-pipeline}{Github Repo}
+\resumeItemListEnd
+
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{Microservice Observability Pipeline} $|$ 
+\emph{Python, FastAPI, Docker, Kubernetes, Kafka, Grafana}}{}
+\resumeItemListStart
+    \resumeItem{Built a local, fully open-source observability pipeline to trace and debug failing requests across distributed microservices in real time.}
+    \resumeItem{Designed an event-driven log pipeline using Kafka to decouple log ingestion from processing, enabling multiple independent consumers (Loki for storage, custom anomaly detection).}
+    \resumeItem{Implemented distributed tracing with OpenTelemetry and Jaeger, and orchestrated the multi-component stack (3 microservices, Fluent Bit, Kafka, Loki, Jaeger, Grafana) on Kubernetes. Code: \href{https://github.com/your-username/microservice-observability-pipeline}{Github Repo}}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Voice-first Personal GenAI Assistant}
+$|$
+\emph{LiveKit, OpenAI, Deepgram}}
+{Nov 2025 -- Jan 2026}
+
+\resumeItemListStart
+\resumeItem{Developed a real-time voice-first personal assistant using LiveKit, OpenAI and Deepgram with hybrid action and knowledge workflows.}
+\resumeItem{Implemented function calling, intent parsing, contextual confirmations and semantic interruption for conversational realism.}
+\resumeItem{Achieved low-latency speech, intent and execution pipeline suitable for interactive agent use cases.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{VS Code Extension}
+$|$
+\emph{MaRS IIT Roorkee, C++, Python}}
+{Dec 2024 -- Jan 2025}
+
+\resumeItemListStart
+\resumeItem{Built a VS Code extension integrating LeetCode with CPH to fetch sample test cases directly from problem URLs.}
+\resumeItem{Automated local testing by storing inputs and outputs as files and executing user programs in C++ and Python.}
+\resumeItem{Implemented output comparison to highlight mismatches, improving debugging workflow for competitive programming.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Text-to-Image Generation}
+$|$
+\emph{Stable Diffusion, Hugging Face}}
+{May 2024 -- Jun 2024}
+
+\resumeItemListStart
+\resumeItem{Developed a scalable text-to-image generation system using a fine-tuned Stable Diffusion model optimized on the COCO dataset.}
+\resumeItem{Hosted the model on Hugging Face and built a lightweight interface leveraging the Serverless Inference API.}
+\resumeItem{Focused on cost-efficient deployment, rapid experimentation and real-world integration.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Credit Card Default Prediction using Classification and Risk-Based Techniques}
+$|$
+\emph{LightGBM, SMOTE}}
+{May 2025 -- Jun 2025}
+
+\resumeItemListStart
+\resumeItem{Developed a credit risk model to identify likely defaulters while optimizing the F2-score for high-recall decisions.}
+\resumeItem{Engineered behavioral features and applied SMOTE to handle class imbalance.}
+\resumeItem{Achieved an F2-score of 0.60 using a tuned LightGBM model.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Short Circuit Current Prediction using Deep Learning Models}
+$|$
+\emph{Deep Learning}}
+{Mar 2025 -- Apr 2025}
+
+\resumeItemListStart
+\resumeItem{Simulated IEEE 9-bus electrical systems to generate time-series fault data.}
+\resumeItem{Designed and trained a deep learning model for fault classification and real-time current prediction.}
+\resumeItem{Achieved 92.44\% fault classification accuracy and 69.78\% current prediction accuracy.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Data Compression and Decompression Portal}
+$|$
+\emph{React, Node.js}}
+{Jun 2025}
+
+\resumeItemListStart
+\resumeItem{Developed a file compression platform implementing Huffman Coding and Run-Length Encoding algorithms.}
+\resumeItem{Designed a low-latency backend and integrated an interactive chatbot explaining compression logic.}
+\resumeItem{Deployed the application using Render and Vercel following production-style workflows.}
+\resumeItemListEnd
+\resumeProjectHeading
+{\textbf{App Controlled Vehicle (Car)}
+$|$
+\emph{Python, Arduino, Bluetooth}}
+{Jul 2023 -- Nov 2023}
+
+\resumeItemListStart
+\resumeItem{Built an app-controlled smart vehicle using Python (Tkinter) and Arduino with real-time Bluetooth communication through the HC-05 module.}
+\resumeItem{Applied hardware-software co-design principles aligned with real-world automation and IoT systems.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Smart Vision Quality Control System}
+$|$
+\emph{Computer Vision, LLM Pipelines}}
+{Oct 2024 -- Dec 2024}
+
+\resumeItemListStart
+\resumeItem{Developed a computer vision-based inspection system to automate package quality and content verification.}
+\resumeItem{Fine-tuned vision models and LLM-assisted pipelines for product classification, attribute extraction and defect detection.}
+\resumeItem{Simulated real-world deployment conditions to validate system accuracy and efficiency for supply-chain quality control.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Cartpole Balance System}
+$|$
+\emph{Reinforcement Learning, Webots}}
+{Jan 2024 -- Mar 2024}
+
+\resumeItemListStart
+\resumeItem{Built a real-time cartpole balancing system in Webots using Actor-Critic Reinforcement Learning.}
+\resumeItem{Integrated live physics simulation with policy optimization loops for continuous feedback-based control.}
+\resumeItem{Optimized reward shaping and learning rate to reduce convergence time.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Echo State Network for Time Series Classification}
+$|$
+\emph{Reservoir Computing}}
+{Mar 2025 -- Present}
+
+\resumeItemListStart
+\resumeItem{Developed a low-latency Echo State Network (ESN) for ECG time-series classification.}
+\resumeItem{Achieved 94.15\% classification accuracy with significantly lower computational overhead than traditional RNNs.}
+\resumeItem{Designed the model for scalable inference in resource-constrained environments.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Using PINNs to Solve Differential Equations}
+$|$
+\emph{Physics-Informed Neural Networks}}
+{Aug 2024 -- Dec 2024}
+
+\resumeItemListStart
+\resumeItem{Applied Physics-Informed Neural Networks (PINNs) to solve ordinary and partial differential equations.}
+\resumeItem{Integrated governing physical constraints directly into the learning objective.}
+\resumeItem{Achieved $R^2$ scores of 0.971 and 0.990 for the real and imaginary components of the Nonlinear Schrödinger Equation.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Fine-tuning Deep Learning Models on Astrophysical Datasets}
+$|$
+\emph{Computer Vision}}
+{Aug 2024 -- Nov 2024}
+
+\resumeItemListStart
+\resumeItem{Designed fine-tuning strategies for classifying over 100,000 galaxy images from the Galaxy Zoo dataset.}
+\resumeItem{Evaluated pretrained architectures including ResNet-50, EfficientNet-B0/B3 and Vision Transformer.}
+\resumeItem{Proposed layer-freezing, full fine-tuning and ensemble learning strategies for improved accuracy.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------ACHIEVEMENTS-----------
+
+\section{Awards \& Achievements}
+
+\resumeSubHeadingListStart
+
+\resumeItem{Ranked 4th in Flipkart Grid 6.0 (Team Event)}
+
+\resumeItem{Secured East Zone Rank 4 in IQ Challenge organized by Kshitij 2022, IIT Kharagpur}
+
+\resumeItem{Secured AIR 18 in Technothlon'19 (Juniors)}
+
+\resumeItem{Global Rank 801 in Codeforces Round 1032 Div 3}
+
+\resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+
+\section{Technical Skills}
+
+\begin{itemize}[leftmargin=0.15in,label={}]
+\small{\item{
+
+\textbf{Languages}{: C++, Python, HTML, CSS, JavaScript}
+
+\\
+
+\textbf{Frameworks \& Tools}{: React, Node.js, VS Code, Jupyter Notebook, Google Colab, Git, GitHub, MATLAB, Android Studio}
+
+\\
+
+\textbf{Courses}{:
+Supervised Machine Learning,
+Machine Learning: Advanced Learning Algorithms,
+Generative Adversarial Networks,
+Intermediate Machine Learning,
+Feature Engineering,
+Intro to Deep Learning,
+Computer Vision,
+Time Series}
+
+}}
+\end{itemize}
+
+%-----------POSITIONS-----------
+
+\section{Positions of Responsibility}
+
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Competitive Programming}
+{Dec 2023 -- Present}
+{Online Judges}{}
+
+\resumeItemListStart
+\resumeItem{Specialist on Codeforces with a maximum rating of 1494.}
+\resumeItem{Solved 800+ problems across Dynamic Programming, Graphs, Greedy, Number Theory and other topics.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Deputy Cell Secretary}
+{Jul 2024 -- Present}
+{Marketing \& Promotions Cell, NSS IIT Roorkee}{}
+
+\resumeItemListStart
+\resumeItem{Promoted NSS initiatives across campus and social media platforms.}
+\resumeItem{Managed outreach campaigns and collaborated with multiple teams to improve engagement.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Member}
+{Mar 2024 -- Present}
+{Models and Robotics Section (MaRS), IIT Roorkee}{}
+
+\resumeItemListStart
+\resumeItem{Worked on AI/ML robotics projects and contributed to model development and testing.}
+\resumeItem{Participated in Flipkart Grid 6.0 (4th Position) and Srishti 2025 (1st Position).}
+\resumeItemListEnd
+
+\resumeSubheading
+{Executive}
+{Feb 2025 -- Present}
+{Electrical Engineering Student Society (EESS)}{}
+
+\resumeItemListStart
+\resumeItem{Developed and maintained digital platforms for event promotions.}
+\resumeItem{Improved web engagement through UI/UX redesign using HTML, CSS, JavaScript and React.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Coordinator}
+{Mar 2024}
+{Cognizance, IIT Roorkee}{}
+
+\resumeItemListStart
+\resumeItem{Managed and coordinated AgentX during IIT Roorkee's annual technical festival.}
+\resumeItem{Worked with participants and technical teams to ensure smooth event execution.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Hack-8-All Hackathon Participant}
+{Aug 2024}
+{MDG, IIT Roorkee}{}
+
+\resumeItemListStart
+\resumeItem{Built an AI assistant supporting chatbot, image generation, video generation and language translation.}
+\resumeItem{Implemented login authentication and session storage for improved user experience.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Math Challenge Participant}
+{Feb 2022}
+{Kshitij, IIT Kharagpur}{}
+
+\resumeItemListStart
+\resumeItem{Solved challenging mathematical problems in the IQ Challenge conducted by Kshitij 2022.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------REFERENCES-----------
+
+\section{References}
+
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Dr. G. N. Pillai}{}{Professor, IIT Roorkee}{gn.pillai@ee.iitr.ac.in}
+
+\resumeSubheading
+{Varun Kumar Singla}{}{Assistant Professor, IIT Roorkee}{singlav@ee.iitr.ac.in}
+
+\resumeSubHeadingListEnd
+
+\end{document}

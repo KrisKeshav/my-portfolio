@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { experience, positions } from "@/lib/data";
+import TerminalCard from "./TerminalCard";
 
 type TimelineItem = {
   hash: string;
@@ -11,8 +11,6 @@ type TimelineItem = {
 };
 
 export default function Experience() {
-  const [hoveredHash, setHoveredHash] = useState<string | null>(null);
-
   const items: TimelineItem[] = [
     {
       hash: "a1c3f9d",
@@ -40,61 +38,33 @@ export default function Experience() {
 
   return (
     <section className="h-full">
-      <div className="h-full flex flex-col rounded-2xl border border-border/80 bg-surface/50 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center justify-between px-5 py-3 bg-surface2/80 border-b border-border/80 font-mono text-xs text-faint backdrop-blur-md">
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#FF6058] shadow-sm" />
-            <span className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm" />
-            <span className="w-3 h-3 rounded-full bg-[#28C93F] shadow-sm" />
-            <span className="ml-3 font-semibold tracking-wide">git log --grep=&quot;experience&quot;</span>
-          </div>
-          <span className="bg-cyan/10 text-cyan px-2 py-0.5 rounded-md border border-cyan/20">3 commits</span>
-        </div>
+      <TerminalCard command={'git log --grep="experience"'} label="3 commits" accent="cyan">
         <div className="p-6 md:p-8 space-y-6 font-mono text-xs">
           {items.map((item, idx) => {
-            const isHovered = hoveredHash === item.hash;
             const isLast = idx === items.length - 1;
 
             return (
-              <div 
+              <div
                 key={item.hash}
                 className="flex items-stretch gap-5 relative group"
-                onMouseEnter={() => setHoveredHash(item.hash)}
-                onMouseLeave={() => setHoveredHash(null)}
               >
-                {/* Visual Git Graph Column */}
                 <div className="w-10 flex-shrink-0 flex justify-center relative select-none">
-                  {/* Vertical branch line */}
                   {!isLast && (
                     <div className="absolute top-6 bottom-[-24px] left-[19px] w-[2px] bg-gradient-to-b from-cyan/40 to-cyan/10 group-hover:from-cyan group-hover:to-cyan/40 transition-colors duration-500" />
                   )}
-                  
-                  {/* Active node */}
                   <div className="relative mt-1">
                     <svg className="w-10 h-10 overflow-visible">
-                      <circle 
-                        cx="20" 
-                        cy="20" 
-                        r={isHovered ? 7 : 5} 
-                        className={`fill-cyan transition-all duration-300 cursor-pointer ${isHovered ? 'shadow-[0_0_12px_#4DD8D3]' : ''}`}
+                      <circle
+                        cx="20"
+                        cy="20"
+                        r="5"
+                        className="fill-cyan transition-all duration-300 group-hover:r-[7]"
                       />
-                      {isHovered && (
-                        <circle 
-                          cx="20" 
-                          cy="20" 
-                          r="12" 
-                          fill="none"
-                          stroke="#4DD8D3"
-                          strokeWidth="2"
-                          className="animate-ping opacity-70"
-                        />
-                      )}
                     </svg>
                   </div>
                 </div>
 
-                {/* Commit Content Card */}
-                <div className={`flex-1 rounded-xl p-5 transition-all duration-300 border ${isHovered ? "border-cyan/40 bg-cyan/5 shadow-lg shadow-cyan/5 translate-x-1" : "border-border/60 bg-surface2/30"}`}>
+                <div className="flex-1 rounded-xl p-5 transition-all duration-300 border border-border/60 bg-surface2/30 group-hover:border-cyan/40 group-hover:bg-cyan/5 group-hover:shadow-lg group-hover:shadow-cyan/5 group-hover:translate-x-1">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-3">
                       <span className="text-violet font-bold tracking-wider">{item.hash}</span>
@@ -104,7 +74,7 @@ export default function Experience() {
                     </div>
                     <span className="text-[11px] text-muted bg-surface/50 px-2 py-1 rounded-md border border-border/50">{item.dates}</span>
                   </div>
-                  
+
                   <div className="mb-3">
                     <h3 className="text-[15px] font-bold text-text group-hover:text-cyan transition-colors duration-300">
                       {item.role}
@@ -133,7 +103,7 @@ export default function Experience() {
             );
           })}
         </div>
-      </div>
+      </TerminalCard>
     </section>
   );
 }

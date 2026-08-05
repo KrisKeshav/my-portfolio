@@ -1,24 +1,14 @@
 import { links, competitiveProgramming } from "@/lib/data";
+import TerminalCard from "./TerminalCard";
 
 export default function Links() {
-  const ratingProgress = (competitiveProgramming.maxRating / 2000) * 100; // max possible reference rating
+  const ratingProgress = (competitiveProgramming.maxRating / 2000) * 100;
 
   return (
     <section className="h-full">
-      <div className="rounded-lg border border-border bg-surface overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-2.5 bg-surface2 border-b border-border font-mono text-xs text-faint">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF6058]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28C93F]" />
-            <span className="ml-2">curl profiles.json</span>
-          </div>
-          <span>Profiles</span>
-        </div>
+      <TerminalCard command="curl profiles.json" label="Profiles">
         <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
-          
-          {/* Social Profiles Links */}
-          <div className="space-y-4 border border-border bg-surface2/20 p-5 rounded-lg flex flex-col justify-between">
+          <div className="space-y-4 border border-border/60 bg-surface2/30 p-5 rounded-xl flex flex-col justify-between">
             <div>
               <h3 className="text-sm font-bold text-text mb-3"># online_presence</h3>
               <p className="text-muted mb-4 font-sans leading-relaxed">
@@ -26,20 +16,20 @@ export default function Links() {
               </p>
             </div>
             <div className="space-y-2.5">
-              <a 
+              <a
                 href={links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded border border-border bg-surface hover:border-cyan/40 hover:bg-cyan/5 transition-all text-text no-underline group"
+                className="flex items-center justify-between p-2.5 rounded-lg border border-border/60 bg-surface2/30 hover:border-cyan/40 hover:bg-cyan/5 transition-all text-text no-underline group"
               >
                 <span>GitHub — @{links.githubUsername}</span>
                 <span className="text-cyan group-hover:translate-x-1 transition-transform">→</span>
               </a>
-              <a 
+              <a
                 href={links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded border border-border bg-surface hover:border-cyan/40 hover:bg-cyan/5 transition-all text-text no-underline group"
+                className="flex items-center justify-between p-2.5 rounded-lg border border-border/60 bg-surface2/30 hover:border-cyan/40 hover:bg-cyan/5 transition-all text-text no-underline group"
               >
                 <span>LinkedIn — Connect</span>
                 <span className="text-cyan group-hover:translate-x-1 transition-transform">→</span>
@@ -47,8 +37,7 @@ export default function Links() {
             </div>
           </div>
 
-          {/* Competitive Programming Widgets */}
-          <div className="border border-border bg-surface2/20 p-5 rounded-lg space-y-4">
+          <div className="border border-border/60 bg-surface2/30 p-5 rounded-xl space-y-4">
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="text-sm font-bold text-text"># competitive_programming</h3>
@@ -62,16 +51,16 @@ export default function Links() {
             <div className="space-y-3 pt-2">
               <div className="flex justify-between items-center text-muted">
                 <span>Handle:</span>
-                <a 
-                  href={links.codeforces} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={links.codeforces}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-cyan hover:underline"
                 >
                   {competitiveProgramming.handle}
                 </a>
               </div>
-              
+
               <div className="flex justify-between items-center text-muted">
                 <span>Max Rating:</span>
                 <span className="text-text font-bold">{competitiveProgramming.maxRating}</span>
@@ -88,17 +77,16 @@ export default function Links() {
                   <span>Expert (1600+)</span>
                 </div>
                 <div className="w-full bg-border h-1.5 rounded-full overflow-hidden">
-                  <div 
-                    className="bg-cyan h-full rounded-full" 
+                  <div
+                    className="bg-cyan h-full rounded-full"
                     style={{ width: `${ratingProgress}%` }}
                   />
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
+      </TerminalCard>
     </section>
   );
 }

@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { site } from "@/lib/data";
+import TerminalCard from "./TerminalCard";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -46,25 +49,16 @@ export default function Contact() {
 
   return (
     <section className="h-full">
-      <div className="rounded-lg border border-border bg-surface overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-2.5 bg-surface2 border-b border-border font-mono text-xs text-faint">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF6058]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28C93F]" />
-            <span className="ml-2">./send-message.sh</span>
-          </div>
-          <span>Interactive Shell</span>
-        </div>
+      <TerminalCard command="./send-message.sh" label="Interactive Shell">
         <div className="p-6 md:p-8 font-mono text-xs space-y-6">
-          
+
           {status === "idle" && (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex items-center gap-2 text-faint">
                 <span>$</span>
                 <span className="text-cyan">./send-message.sh --interactive</span>
               </div>
-              
+
               <div className="space-y-3.5 pl-4 border-l border-border">
                 <div className="space-y-1">
                   <label htmlFor="contact-name" className="text-muted block">name :</label>
@@ -78,7 +72,6 @@ export default function Contact() {
                     placeholder="Enter your name"
                   />
                 </div>
-
                 <div className="space-y-1">
                   <label htmlFor="contact-email" className="text-muted block">email :</label>
                   <input
@@ -91,7 +84,6 @@ export default function Contact() {
                     placeholder="Enter your email address"
                   />
                 </div>
-
                 <div className="space-y-1">
                   <label htmlFor="contact-message" className="text-muted block">message :</label>
                   <textarea
@@ -104,7 +96,6 @@ export default function Contact() {
                     placeholder="Type your message details here..."
                   />
                 </div>
-
                 <button
                   type="submit"
                   className="px-4 py-2 bg-cyan/10 hover:bg-cyan/20 border border-cyan/40 hover:border-cyan text-cyan rounded font-semibold transition-colors duration-200"
@@ -146,7 +137,7 @@ export default function Contact() {
             <div className="space-y-4 pl-4 border-l border-[#FF6058] py-1">
               <div className="text-[#FF6058] font-bold">ERROR: Code 500 — Delivery failed.</div>
               <p className="text-muted font-sans max-w-md leading-relaxed">
-                Something went wrong while executing the SMTP connection. Please verify your internet connection or email directly at <a href={`mailto:${site.email}`} className="text-cyan hover:underline font-mono">{site.email}</a>.
+                Something went wrong. Please email directly at <a href={`mailto:${site.email}`} className="text-cyan hover:underline font-mono">{site.email}</a>.
               </p>
               <button
                 onClick={() => setStatus("idle")}
@@ -158,7 +149,7 @@ export default function Contact() {
           )}
 
         </div>
-      </div>
+      </TerminalCard>
     </section>
   );
 }

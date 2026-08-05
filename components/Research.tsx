@@ -1,4 +1,5 @@
 import { publications } from "@/lib/data";
+import TerminalCard from "./TerminalCard";
 
 export default function Research() {
   const pub = publications[0];
@@ -11,18 +12,9 @@ export default function Research() {
 
   return (
     <section className="h-full">
-      <div className="rounded-lg border border-border bg-surface overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-2.5 bg-surface2 border-b border-border font-mono text-xs text-faint">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF6058]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28C93F]" />
-            <span className="ml-2">cat research.bib</span>
-          </div>
-          <span>BibTeX</span>
-        </div>
+      <TerminalCard command="cat research.bib" label="BibTeX">
         <div className="p-6 md:p-8 space-y-6">
-          <div className="border border-border bg-surface2/20 rounded-lg p-5 md:p-6 font-mono text-xs">
+          <div className="border border-border/60 bg-surface2/30 rounded-xl p-5 md:p-6 font-mono text-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
               <h3 className="text-sm font-bold text-text hover:text-cyan transition-colors duration-200">
                 <span className="text-cyan">#</span> {pub.title}
@@ -31,11 +23,11 @@ export default function Research() {
                 {pub.venue}
               </span>
             </div>
-            
+
             <p className="text-muted text-xs leading-relaxed mb-4 font-sans">
               {pub.description}
             </p>
-            
+
             <ul className="list-none space-y-1.5 mb-5 pl-0">
               {pub.bullets.map((bullet, bIdx) => (
                 <li key={bIdx} className="flex items-start gap-2 text-text font-sans">
@@ -69,7 +61,7 @@ export default function Research() {
             </div>
           </div>
         </div>
-      </div>
+      </TerminalCard>
     </section>
   );
 }

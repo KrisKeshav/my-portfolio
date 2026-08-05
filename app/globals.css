@@ -7,7 +7,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-bg text-text;
+    @apply bg-bg text-text transition-colors duration-300;
   }
   ::selection {
     @apply bg-amberDim text-white;
@@ -17,6 +17,14 @@
   }
 }
 
+[data-theme="matrix"] {
+  filter: hue-rotate(90deg) contrast(1.1);
+}
+
+[data-theme="cyan"] {
+  filter: hue-rotate(180deg);
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -24,4 +32,18 @@
 }
 .animate-blink {
   animation: blink 1s steps(1) infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
