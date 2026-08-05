@@ -270,6 +270,7 @@ def generate(prompt, num_steps=20):
       "Implemented distributed tracing with OpenTelemetry and Jaeger, and orchestrated the multi-component stack on Kubernetes."
     ],
     tags: ["Python", "FastAPI", "Docker", "Kubernetes", "Kafka", "Grafana"],
+    github: "https://github.com/KrisKeshav/Microservice-Observability-Pipeline",
     metrics: [
       { label: "Microservices", value: "3" },
       { label: "Components", value: "6" }
