@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
+import Positions from "@/components/Positions";
 import Education from "@/components/Education";
 import Blog from "@/components/Blog";
 import Research from "@/components/Research";
@@ -13,7 +14,7 @@ import FadeIn from "@/components/FadeIn";
 
 const GithubHeatmap = dynamic(() => import("@/components/GithubHeatmap"), { ssr: false });
 
-const NAV_ITEMS = ["about", "skills", "projects", "experience", "education", "blog", "research", "links", "contact"];
+const NAV_ITEMS = ["about", "skills", "projects", "experience", "positions", "education", "blog", "research", "links", "contact"];
 
 export default function Home() {
   return (
@@ -80,6 +81,13 @@ export default function Home() {
         <FadeIn className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
           <div id="experience">
             <Experience />
+          </div>
+        </FadeIn>
+
+        {/* POSITIONS OF RESPONSIBILITY TILE */}
+        <FadeIn delay={0.05} className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+          <div id="positions">
+            <Positions />
           </div>
         </FadeIn>
 

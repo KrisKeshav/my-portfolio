@@ -240,7 +240,7 @@ export default function CommandPalette() {
         } else {
           newEntries.push({
             type: "error",
-            content: <div className="text-amber text-xs font-mono">Usage: goto [about|projects|skills|experience|education|contact]</div>,
+            content: <div className="text-amber text-xs font-mono">Usage: goto [about|projects|skills|experience|positions|education|contact]</div>,
           });
         }
         break;
@@ -428,7 +428,11 @@ export default function CommandPalette() {
                 </Command.Item>
                 <Command.Item onSelect={() => { scrollTo('experience'); setOpen(false); }} className="flex items-center gap-2 px-3 py-2 text-xs text-text rounded-md cursor-pointer aria-selected:bg-surface2 aria-selected:text-cyan">
                   <Briefcase className="w-3.5 h-3.5" />
-                  <span>Experience</span>
+                  <span>Corporate Experience</span>
+                </Command.Item>
+                <Command.Item onSelect={() => { scrollTo('positions'); setOpen(false); }} className="flex items-center gap-2 px-3 py-2 text-xs text-text rounded-md cursor-pointer aria-selected:bg-surface2 aria-selected:text-amber">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>Positions of Responsibility</span>
                 </Command.Item>
                 <Command.Item onSelect={() => { scrollTo('education'); setOpen(false); }} className="flex items-center gap-2 px-3 py-2 text-xs text-text rounded-md cursor-pointer aria-selected:bg-surface2 aria-selected:text-cyan">
                   <GraduationCap className="w-3.5 h-3.5" />

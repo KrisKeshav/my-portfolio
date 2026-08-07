@@ -46,6 +46,7 @@ export type Experience = {
   location: string;
   dates: string;
   bullets: string[];
+  certificateUrl?: string;
 };
 
 export const experience: Experience[] = [
@@ -60,6 +61,7 @@ export const experience: Experience[] = [
       "Incorporated authentication, agents integration with multi-portal UI replacing manual spreadsheet tracking.",
       "Also developed a Custom Multi-Lingual translator from scratch with dictionaries containing 34000+ words.",
     ],
+    certificateUrl: "/accenture-internship-certificate.pdf",
   },
 ];
 
