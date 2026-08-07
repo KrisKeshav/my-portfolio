@@ -7,7 +7,7 @@ import { site, projects, skills, links } from "@/lib/data";
 import { 
   User, Terminal, Code2, Briefcase, GraduationCap, 
   PenTool, FlaskConical, Link as LinkIcon, Mail, 
-  FileText, Download, Search, Sparkles, Monitor
+  FileText, Download, Search, Sparkles, Monitor, Award
 } from "lucide-react";
 
 type OutputEntry = {
