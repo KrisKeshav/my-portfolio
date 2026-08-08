@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { publications } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
-import { FileText, Award, ExternalLink, Download, Eye, X } from "lucide-react";
+import { FileText, Award, ExternalLink, Download, Eye, X, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Research() {
   const pub = publications[0];
   const [activeTab, setActiveTab] = useState<"paper" | "certificate">("paper");
-  const [isEmbeddedOpen, setIsEmbeddedOpen] = useState(true);
+  const [isEmbeddedOpen, setIsEmbeddedOpen] = useState(false);
   const [selectedModalPdf, setSelectedModalPdf] = useState<{ title: string; url: string } | null>(null);
 
   const bibtex = `@article{keshav2026fast,
@@ -17,6 +17,15 @@ export default function Research() {
   journal={IEEE SEFET},
   year={2026}
 }`;
+
+  const toggleTab = (tab: "paper" | "certificate") => {
+    if (isEmbeddedOpen && activeTab === tab) {
+      setIsEmbeddedOpen(false);
+    } else {
+      setActiveTab(tab);
+      setIsEmbeddedOpen(true);
+    }
+  };
 
   return (
     <section className="h-full">
@@ -53,33 +62,31 @@ export default function Research() {
             <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-border/60 justify-between">
               <div className="flex flex-wrap items-center gap-2">
                 <button
-                  onClick={() => {
-                    setActiveTab("paper");
-                    setIsEmbeddedOpen(true);
-                  }}
+                  onClick={() => toggleTab("paper")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-sans font-medium transition-all ${
                     activeTab === "paper" && isEmbeddedOpen
                       ? "bg-cyan/20 border-cyan/50 text-cyan shadow-sm"
                       : "bg-surface/60 border-border text-muted hover:text-text hover:bg-surface"
                   }`}
+                  title="Toggle embedded research paper PDF"
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>Paper PDF</span>
+                  <span>{isEmbeddedOpen && activeTab === "paper" ? "Hide Paper" : "Embedded Paper"}</span>
+                  {isEmbeddedOpen && activeTab === "paper" ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                 </button>
 
                 <button
-                  onClick={() => {
-                    setActiveTab("certificate");
-                    setIsEmbeddedOpen(true);
-                  }}
+                  onClick={() => toggleTab("certificate")}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-sans font-medium transition-all ${
                     activeTab === "certificate" && isEmbeddedOpen
                       ? "bg-amber/20 border-amber/50 text-amber shadow-sm"
                       : "bg-surface/60 border-border text-muted hover:text-text hover:bg-surface"
                   }`}
+                  title="Toggle embedded presentation certificate PDF"
                 >
                   <Award className="w-3.5 h-3.5" />
-                  <span>Presentation Certificate</span>
+                  <span>{isEmbeddedOpen && activeTab === "certificate" ? "Hide Certificate" : "Certificate"}</span>
+                  {isEmbeddedOpen && activeTab === "certificate" ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                 </button>
               </div>
 
