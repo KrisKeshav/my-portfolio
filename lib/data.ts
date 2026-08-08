@@ -383,6 +383,8 @@ export type Publication = {
   bullets: string[];
   github?: string;
   arxiv?: string;
+  paperPdf?: string;
+  certificatePdf?: string;
 };
 
 export const publications: Publication[] = [
@@ -397,6 +399,8 @@ export const publications: Publication[] = [
     ],
     github: "https://github.com/PSquare-Lab/DDIM_OPF",
     arxiv: "https://arxiv.org/abs/2602.03020",
+    paperPdf: "/paper-preprint.pdf",
+    certificatePdf: "/presentation-certificate.pdf",
   },
 ];
 
