@@ -10,14 +10,18 @@ import Research from "@/components/Research";
 import Links from "@/components/Links";
 import Contact from "@/components/Contact";
 import FadeIn from "@/components/FadeIn";
+import ScrollNav from "@/components/ScrollNav";
 
 const GithubHeatmap = dynamic(() => import("@/components/GithubHeatmap"), { ssr: false });
 
-const NAV_ITEMS = ["about", "skills", "projects", "experience", "positions", "education", "research", "links", "contact"];
+const NAV_ITEMS = ["about", "research", "skills", "projects", "experience", "positions", "education", "links", "contact"];
 
 export default function Home() {
   return (
     <div className="mx-auto min-h-screen max-w-[1400px] p-4 md:p-6 lg:p-8">
+      {/* Scroll Navigation Aid (Progress Bar & Side Dots) */}
+      <ScrollNav />
+
       {/* Top Navbar */}
       <nav className="sticky top-4 z-40 mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl border border-border/80 bg-surface/80 backdrop-blur-md p-4 px-6 md:px-8 shadow-lg">
         <div className="font-mono font-bold text-lg text-amber flex items-center gap-2">
@@ -59,10 +63,10 @@ export default function Home() {
           </FadeIn>
         </div>
 
-        {/* ACTIVITY - full width */}
+        {/* RESEARCH - full width (High priority differentiator) */}
         <FadeIn delay={0.15} className="scroll-mt-24">
-          <div id="activity">
-            <GithubHeatmap />
+          <div id="research" className="h-full">
+            <Research />
           </div>
         </FadeIn>
 
@@ -94,7 +98,7 @@ export default function Home() {
           </FadeIn>
         </div>
 
-        {/* ROW: Education + Research */}
+        {/* ROW: Education + Activity */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
           <FadeIn className="h-full scroll-mt-24">
             <div id="education" className="h-full">
@@ -102,8 +106,8 @@ export default function Home() {
             </div>
           </FadeIn>
           <FadeIn delay={0.1} className="h-full scroll-mt-24">
-            <div id="research" className="h-full">
-              <Research />
+            <div id="activity" className="h-full">
+              <GithubHeatmap />
             </div>
           </FadeIn>
         </div>
