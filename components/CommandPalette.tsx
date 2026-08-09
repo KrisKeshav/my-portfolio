@@ -258,7 +258,6 @@ export default function CommandPalette() {
           content: (
             <div className="space-y-1 text-xs font-mono text-text p-2 bg-surface2/40 rounded-lg">
               <div>Email: <a href={`mailto:${site.email}`} className="text-cyan underline">{site.email}</a></div>
-              <div>Phone: <span className="text-amber">{site.phone}</span></div>
               <div>GitHub: <a href={links.github} target="_blank" className="text-cyan underline">KrisKeshav</a></div>
             </div>
           ),

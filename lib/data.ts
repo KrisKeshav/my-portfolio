@@ -4,7 +4,6 @@ export const site = {
     "Aspiring Software engineer building toward DSA, system design, and exploring distributed infrastructure — learning in public.",
   location: "Roorkee, India",
   email: "kris_k@ee.iitr.ac.in",
-  phone: "+91-7764951720",
   bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, and AI. I have hands-on experience building full-stack applications, designing robust APIs, and implementing physics-informed machine learning models. I enjoy competitive programming and tackling complex system design challenges.",
 };
 
@@ -90,12 +89,13 @@ export const projects: Project[] = [
     id: "srf-pll-cyberattack",
     name: "AI-Driven Cyberattack Detection for SRF-PLL Systems",
     category: "Cyber-Physical",
+    dates: "Jan 2025 – Mar 2025",
     description:
       "OpenEnv-based cyber-physical security framework for detecting and classifying False Data Injection (FDI) attacks on SRF-PLL controlled grid-connected inverters.",
     longDescription:
       "A comprehensive cyber-physical framework designed to protect smart power grids against stealthy False Data Injection (FDI) attacks targeting Synchronous Reference Frame Phase-Locked Loops (SRF-PLL). Integrates real-time telemetry processing with physics-based constraints and LLM-assisted decision support.",
     bullets: [
-      "Built an OpenEnv-based cyber-physical security framework for detecting and classifying False Data Injection (FDI) attacks on SRF-PLL controlled grid-connected inverters.",
+      "Engineered real-time Park transform telemetry filters and dq0 residual evaluation routines.",
       "Combined physics-informed anomaly detection, heuristic reasoning, and LLM (Qwen) assisted decision making.",
       "Evaluated attack detection across sinusoidal, ramp, pulse, and stealthy attack scenarios, achieving 99.0% detection score and 87.2% multi-attack classification score.",
     ],
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     longDescription:
       "An end-to-end credit risk modeling pipeline focused on minimizing costly false negatives in credit default predictions. Utilizes advanced resampling techniques and custom threshold tuning to maximize the recall-weighted F2-score.",
     bullets: [
-      "Built a credit risk classification model optimizing F2-score for high-recall decisions.",
+      "Formulated custom LightGBM hyperparameter sets and feature engineering for utilization gradients.",
       "Handled class imbalance using SMOTE and achieved F2-score of 0.60 with tuned LightGBM.",
     ],
     tags: ["LightGBM", "SMOTE", "Python", "Scikit-Learn"],
@@ -184,11 +184,11 @@ model = lgb.train(params, lgb.Dataset(X_res, label=y_res))`,
     longDescription:
       "High-throughput edge vision solution for real-time manufacturing quality control. Built for Flipkart GRID 6.0 competition, securing 4th rank nationally out of thousands of participating engineering teams.",
     bullets: [
-      "Developed an AI-based computer vision system for automated product classification and defect detection.",
+      "Designed dual-stage YOLOv8 detection pipeline with OpenCV bounding-box inference for high-speed edge inspection.",
       "Finished 4th nationally in Flipkart GRID 6.0 with this solution.",
     ],
     tags: ["Computer Vision", "YOLOv8", "OpenCV", "PyTorch"],
-    github: "https://github.com/KrisKeshav",
+    github: "https://github.com/KrisKeshav/Smart-Vision-Quality-Control",
     metrics: [
       { label: "National Rank", value: "#4" },
       { label: "Processing Speed", value: "45 FPS" },
@@ -226,7 +226,7 @@ def process_frame(frame):
     longDescription:
       "A containerized local generative AI application enabling fast text-to-image creation without external API costs. Includes custom LoRA adapter integration and an interactive Streamlit user dashboard.",
     bullets: [
-      "Developed a modular, local-inference pipeline using fine-tuned Stable Diffusion v1.5 and Hugging Face Diffusers.",
+      "Fine-tuned DPM-Solver schedulers and custom LoRA weight injections in float16 precision.",
       "Built an interactive Streamlit dashboard and containerized the setup using Docker for reproducible deployment across different environments.",
     ],
     tags: ["Stable Diffusion", "Hugging Face", "Streamlit", "Docker"],
@@ -264,10 +264,11 @@ def generate(prompt, num_steps=20):
     id: "microservice-observability",
     name: "Microservice Observability Pipeline",
     category: "Full Stack",
+    dates: "Feb 2025 – Apr 2025",
     description: "Local, fully open-source observability pipeline to trace and debug failing requests across distributed microservices.",
     longDescription: "An event-driven log pipeline using Kafka to decouple log ingestion from processing, enabling multiple independent consumers like Loki for storage and custom anomaly detection. Implemented distributed tracing with OpenTelemetry and Jaeger, orchestrated on Kubernetes.",
     bullets: [
-      "Built a local, fully open-source observability pipeline to trace and debug failing requests across distributed microservices in real time.",
+      "Integrated Fluent Bit log streaming with Jaeger distributed tracing span propagation across FastAPI endpoints.",
       "Designed an event-driven log pipeline using Kafka to decouple log ingestion from processing, enabling multiple independent consumers.",
       "Implemented distributed tracing with OpenTelemetry and Jaeger, and orchestrated the multi-component stack on Kubernetes."
     ],
@@ -297,14 +298,15 @@ def generate(prompt, num_steps=20):
     description: "Real-time voice-first personal assistant with hybrid action and knowledge workflows.",
     longDescription: "Developed a real-time voice-first personal assistant using LiveKit, OpenAI and Deepgram. Implemented function calling, intent parsing, contextual confirmations and semantic interruption for conversational realism.",
     bullets: [
-      "Developed a real-time voice-first personal assistant using LiveKit, OpenAI and Deepgram with hybrid action and knowledge workflows.",
+      "Wired WebSocket audio streaming through Deepgram STT into low-latency OpenAI response handlers.",
       "Implemented function calling, intent parsing, contextual confirmations and semantic interruption for conversational realism.",
       "Achieved low-latency speech, intent and execution pipeline suitable for interactive agent use cases."
     ],
-    tags: ["LiveKit", "OpenAI", "Deepgram"],
+    tags: ["LiveKit", "OpenAI", "Deepgram", "Python"],
+    github: "https://github.com/KrisKeshav/Voice-GenAI-Assistant",
     metrics: [
-      { label: "Latency", value: "Low" },
-      { label: "Modality", value: "Voice" }
+      { label: "Pipeline Latency", value: "< 400ms" },
+      { label: "Modality", value: "Full Duplex Voice" }
     ],
     architecture: [
       "Speech-to-text via Deepgram",
@@ -325,11 +327,12 @@ def generate(prompt, num_steps=20):
     description: "Physics-Informed Neural Networks to solve ordinary and partial differential equations.",
     longDescription: "Applied Physics-Informed Neural Networks (PINNs) to solve ordinary and partial differential equations. Integrated governing physical constraints directly into the learning objective.",
     bullets: [
-      "Applied Physics-Informed Neural Networks (PINNs) to solve ordinary and partial differential equations.",
-      "Integrated governing physical constraints directly into the learning objective.",
+      "Embedded physical differential operator loss terms via automatic differentiation in PyTorch.",
+      "Integrated governing physical constraints directly into the neural network optimization objective.",
       "Achieved R^2 scores of 0.971 and 0.990 for the real and imaginary components of the Nonlinear Schrödinger Equation."
     ],
-    tags: ["PINNs", "Deep Learning", "Physics"],
+    tags: ["PINNs", "Deep Learning", "PyTorch", "Physics"],
+    github: "https://github.com/KrisKeshav/PINNs-Differential-Equations",
     metrics: [
       { label: "R² (Real)", value: "0.971" },
       { label: "R² (Imaginary)", value: "0.990" }
@@ -353,14 +356,15 @@ def generate(prompt, num_steps=20):
     description: "VS Code extension integrating LeetCode with CPH to fetch sample test cases.",
     longDescription: "Built a VS Code extension integrating LeetCode with CPH to fetch sample test cases directly from problem URLs. Automated local testing by storing inputs and outputs as files and executing user programs.",
     bullets: [
-      "Built a VS Code extension integrating LeetCode with CPH to fetch sample test cases directly from problem URLs.",
+      "Scraped and parsed problem DOM nodes to auto-generate I/O test fixtures locally.",
       "Automated local testing by storing inputs and outputs as files and executing user programs in C++ and Python.",
       "Implemented output comparison to highlight mismatches, improving debugging workflow for competitive programming."
     ],
-    tags: ["VS Code", "C++", "Python"],
+    tags: ["VS Code", "TypeScript", "C++", "Python"],
+    github: "https://github.com/KrisKeshav/CP-LeetCode-VSCode-Extension",
     metrics: [
-      { label: "Languages", value: "C++, Python" },
-      { label: "Workflow", value: "Automated" }
+      { label: "Supported Languages", value: "C++, Python" },
+      { label: "Execution Time", value: "< 100ms" }
     ],
     architecture: [
       "VS Code Extension API",

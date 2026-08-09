@@ -6,7 +6,7 @@ export default function Links() {
 
   return (
     <section className="h-full">
-      <TerminalCard command="curl profiles.json" label="Profiles">
+      <TerminalCard title="Online Profiles" command="curl profiles.json" label="Profiles">
         <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
           <div className="space-y-4 border border-border/60 bg-surface2/30 p-5 rounded-xl flex flex-col justify-between">
             <div>

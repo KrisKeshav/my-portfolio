@@ -19,23 +19,27 @@ export default function Home() {
   return (
     <div className="mx-auto min-h-screen max-w-[1400px] p-4 md:p-6 lg:p-8">
       {/* Top Navbar */}
-      <nav className="mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl border border-border/80 bg-surface/50 backdrop-blur-sm p-5 px-8 shadow-sm">
-        <div className="font-mono font-bold text-xl text-amber flex items-center gap-2">
+      <nav className="sticky top-4 z-40 mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl border border-border/80 bg-surface/80 backdrop-blur-md p-4 px-6 md:px-8 shadow-lg">
+        <div className="font-mono font-bold text-lg text-amber flex items-center gap-2">
           root@portfolio
-          <span className="w-2.5 h-5 bg-amber animate-blink" />
+          <span className="w-2 h-4 bg-amber animate-blink" />
         </div>
         <div className="flex flex-col md:flex-row items-center gap-4">
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono text-sm">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 font-mono text-xs">
             {NAV_ITEMS.map((item) => (
-              <a key={item} href={`#${item}`} className="text-muted hover:text-cyan no-underline transition-colors font-medium">
-                ./{item}
+              <a 
+                key={item} 
+                href={`#${item}`} 
+                className="text-muted hover:text-cyan no-underline transition-colors font-medium hover:bg-surface2/60 px-2 py-1 rounded-md capitalize"
+              >
+                {item}
               </a>
             ))}
           </div>
-          <div className="hidden md:flex items-center gap-2 text-xs font-mono text-faint border-l border-border/60 pl-4 ml-2">
+          <div className="hidden lg:flex items-center gap-2 text-xs font-mono text-faint border-l border-border/60 pl-4 ml-1">
             <span>Press</span>
             <kbd className="px-1.5 py-0.5 rounded border border-border/80 bg-surface2 text-muted font-sans font-bold text-[10px]">⌘K</kbd>
-            <span>to navigate</span>
+            <span>to search</span>
           </div>
         </div>
       </nav>

@@ -15,7 +15,7 @@ export default function Experience() {
 
   return (
     <section className="h-full">
-      <TerminalCard command={'git log --grep="corporate-experience"'} label={`${experience.length} commit`} accent="cyan">
+      <TerminalCard title="Corporate Experience" command={'git log --grep="corporate-experience"'} label={`${experience.length} commit`} accent="cyan">
         <div className="p-6 md:p-8 space-y-6 font-mono text-xs">
           {experience.map((item, idx) => {
             const isLast = idx === experience.length - 1;

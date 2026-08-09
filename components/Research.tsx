@@ -29,7 +29,7 @@ export default function Research() {
 
   return (
     <section className="h-full">
-      <TerminalCard command="cat research.bib && ls docs/" label="Research">
+      <TerminalCard title="Research Publication" command="cat research.bib && ls docs/" label="Research">
         <div className="p-6 md:p-8 space-y-6">
           <div className="border border-border/60 bg-surface2/30 rounded-xl p-5 md:p-6 font-mono text-xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">

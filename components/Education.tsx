@@ -40,7 +40,7 @@ export default function Education() {
 
   return (
     <section className="h-full">
-      <TerminalCard command={'git log --grep="education"'} label="3 commits" accent="amber">
+      <TerminalCard title="Education" command={'git log --grep="education"'} label="3 commits" accent="amber">
         <div className="p-6 md:p-8 space-y-6 font-mono text-xs">
           {items.map((item, idx) => {
             const isLast = idx === items.length - 1;

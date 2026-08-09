@@ -6,8 +6,22 @@ import TerminalCard from "./TerminalCard";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [progressMsg, setProgressMsg] = useState("");
+
+  const validate = () => {
+    const errs: { name?: string; email?: string; message?: string } = {};
+    if (!formData.name.trim()) errs.name = "Name is required";
+    if (!formData.email.trim()) {
+      errs.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errs.email = "Valid email address required";
+    }
+    if (!formData.message.trim()) errs.message = "Message is required";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
 
   const runFakeTerminalProgress = async () => {
     setStatus("sending");
@@ -25,7 +39,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!validate()) return;
 
     await runFakeTerminalProgress();
 
@@ -39,6 +53,7 @@ export default function Contact() {
       if (response.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
+        setErrors({});
       } else {
         setStatus("error");
       }
@@ -49,7 +64,7 @@ export default function Contact() {
 
   return (
     <section className="h-full">
-      <TerminalCard command="./send-message.sh" label="Interactive Shell">
+      <TerminalCard title="Contact Me" command="./send-message.sh" label="Interactive Shell">
         <div className="p-6 md:p-8 font-mono text-xs space-y-6">
 
           {status === "idle" && (
@@ -59,43 +74,64 @@ export default function Contact() {
                 <span className="text-cyan">./send-message.sh --interactive</span>
               </div>
 
-              <div className="space-y-3.5 pl-4 border-l border-border">
+              <div className="space-y-4 pl-4 border-l border-border">
                 <div className="space-y-1">
-                  <label htmlFor="contact-name" className="text-muted block">name :</label>
+                  <label htmlFor="contact-name" className="text-muted block">
+                    name <span className="text-amber font-bold">*</span> :
+                  </label>
                   <input
                     id="contact-name"
                     type="text"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full max-w-md bg-surface2 border border-border rounded px-3 py-1.5 text-text focus:outline-none focus:border-cyan text-xs font-mono"
+                    onChange={(e) => {
+                      setFormData({ ...formData, name: e.target.value });
+                      if (errors.name) setErrors({ ...errors, name: undefined });
+                    }}
+                    className={`w-full max-w-md bg-surface2 border ${errors.name ? "border-[#FF6058]" : "border-border"} rounded px-3 py-1.5 text-text focus:outline-none focus:border-cyan text-xs font-mono`}
                     placeholder="Enter your name"
                   />
+                  {errors.name && <p className="text-[11px] text-[#FF6058] mt-0.5">{errors.name}</p>}
                 </div>
+
                 <div className="space-y-1">
-                  <label htmlFor="contact-email" className="text-muted block">email :</label>
+                  <label htmlFor="contact-email" className="text-muted block">
+                    email <span className="text-amber font-bold">*</span> :
+                  </label>
                   <input
                     id="contact-email"
                     type="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full max-w-md bg-surface2 border border-border rounded px-3 py-1.5 text-text focus:outline-none focus:border-cyan text-xs font-mono"
+                    onChange={(e) => {
+                      setFormData({ ...formData, email: e.target.value });
+                      if (errors.email) setErrors({ ...errors, email: undefined });
+                    }}
+                    className={`w-full max-w-md bg-surface2 border ${errors.email ? "border-[#FF6058]" : "border-border"} rounded px-3 py-1.5 text-text focus:outline-none focus:border-cyan text-xs font-mono`}
                     placeholder="Enter your email address"
                   />
+                  {errors.email && <p className="text-[11px] text-[#FF6058] mt-0.5">{errors.email}</p>}
                 </div>
+
                 <div className="space-y-1">
-                  <label htmlFor="contact-message" className="text-muted block">message :</label>
+                  <label htmlFor="contact-message" className="text-muted block">
+                    message <span className="text-amber font-bold">*</span> :
+                  </label>
                   <textarea
                     id="contact-message"
                     required
                     rows={4}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-surface2 border border-border rounded px-3 py-1.5 text-text focus:outline-none focus:border-cyan text-xs font-mono resize-none"
+                    onChange={(e) => {
+                      setFormData({ ...formData, message: e.target.value });
+                      if (errors.message) setErrors({ ...errors, message: undefined });
+                    }}
+                    className={`w-full bg-surface2 border ${errors.message ? "border-[#FF6058]" : "border-border"} rounded px-3 py-1.5 text-text focus:outline-none focus:border-cyan text-xs font-mono resize-none`}
                     placeholder="Type your message details here..."
                   />
+                  {errors.message && <p className="text-[11px] text-[#FF6058] mt-0.5">{errors.message}</p>}
                 </div>
+
                 <button
                   type="submit"
                   className="px-4 py-2 bg-cyan/10 hover:bg-cyan/20 border border-cyan/40 hover:border-cyan text-cyan rounded font-semibold transition-colors duration-200"

@@ -24,7 +24,7 @@ export default function Projects() {
 
   return (
     <section className="h-full">
-      <TerminalCard command="ls projects/" label={`Total ${projects.length}`}>
+      <TerminalCard title="Featured Projects" command="ls projects/" label={`Total ${projects.length}`}>
         <div className="p-6 md:p-8 space-y-6">
           {/* Search & Category Filter Controls */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-2 border-b border-border/60">

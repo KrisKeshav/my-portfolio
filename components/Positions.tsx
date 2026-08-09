@@ -13,7 +13,7 @@ export default function Positions() {
 
   return (
     <section className="h-full">
-      <TerminalCard command={'git log --grep="positions-of-responsibility"'} label={`${positions.length} campus roles`} accent="amber">
+      <TerminalCard title="Positions of Responsibility" command={'git log --grep="positions-of-responsibility"'} label={`${positions.length} campus roles`} accent="amber">
         <div className="p-6 md:p-8 space-y-6 font-mono text-xs">
           {positions.map((pos, idx) => {
             const isLast = idx === positions.length - 1;

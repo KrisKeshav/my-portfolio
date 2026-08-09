@@ -5,7 +5,7 @@ import TerminalCard from "./TerminalCard";
 export default function About() {
   return (
     <section className="h-full">
-      <TerminalCard command="cat about.md" label="UTF-8">
+      <TerminalCard title="About Me" command="cat about.md" label="UTF-8">
         <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left space-y-4 font-mono">
             <div className="relative group w-32 h-32 rounded-lg border border-border bg-surface2 overflow-hidden shadow-inner select-none">
@@ -31,10 +31,6 @@ export default function About() {
                 <a href={`mailto:${site.email}`} className="block text-cyan hover:underline truncate">
                   {site.email}
                 </a>
-              </div>
-              <div>
-                <span className="text-faint font-semibold">Phone:</span>
-                <span className="block text-text">{site.phone}</span>
               </div>
             </div>
             <a
