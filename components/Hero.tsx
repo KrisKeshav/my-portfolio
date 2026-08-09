@@ -50,8 +50,8 @@ export default function Hero() {
     const newLogs = [...commandLogs, { kind: "k", text: `visitor@keshav-portfolio:~$ ${inputValue}` }];
 
     if (cmd === "help") {
-      newLogs.push({ kind: "c", text: "Available commands: about | skills | projects | experience | education | blog | research | links | contact | clear | help" });
-    } else if (["about", "skills", "projects", "experience", "education", "blog", "research", "links", "contact"].includes(cmd)) {
+      newLogs.push({ kind: "c", text: "Available commands: about | skills | projects | experience | education | research | links | contact | clear | help" });
+    } else if (["about", "skills", "projects", "experience", "education", "research", "links", "contact"].includes(cmd)) {
       newLogs.push({ kind: "v", text: `Scrolling to #${cmd}...` });
       const element = document.getElementById(cmd);
       if (element) {

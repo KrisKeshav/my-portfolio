@@ -240,7 +240,7 @@ export default function CommandPalette() {
         } else {
           newEntries.push({
             type: "error",
-            content: <div className="text-amber text-xs font-mono">Usage: goto [about|projects|skills|experience|positions|education|contact]</div>,
+            content: <div className="text-amber text-xs font-mono">Usage: goto [about|projects|skills|experience|positions|education|research|contact]</div>,
           });
         }
         break;

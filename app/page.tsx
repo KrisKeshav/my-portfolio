@@ -6,7 +6,6 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Positions from "@/components/Positions";
 import Education from "@/components/Education";
-import Blog from "@/components/Blog";
 import Research from "@/components/Research";
 import Links from "@/components/Links";
 import Contact from "@/components/Contact";
@@ -14,7 +13,7 @@ import FadeIn from "@/components/FadeIn";
 
 const GithubHeatmap = dynamic(() => import("@/components/GithubHeatmap"), { ssr: false });
 
-const NAV_ITEMS = ["about", "skills", "projects", "experience", "positions", "education", "blog", "research", "links", "contact"];
+const NAV_ITEMS = ["about", "skills", "projects", "experience", "positions", "education", "research", "links", "contact"];
 
 export default function Home() {
   return (
@@ -42,89 +41,82 @@ export default function Home() {
       </nav>
 
       {/* BENTO GRID */}
-      <main className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 auto-rows-min gap-4 md:gap-6">
+      <main className="flex flex-col gap-4 md:gap-6">
 
-        {/* HERO TILE */}
-        <FadeIn className="md:col-span-2 xl:col-span-2 xl:row-span-2 h-full min-h-[400px] xl:min-h-0">
-          <Hero />
-        </FadeIn>
+        {/* ROW: Hero + About */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+          <FadeIn className="h-full min-h-[400px] xl:min-h-0">
+            <Hero />
+          </FadeIn>
+          <FadeIn delay={0.1} className="h-full scroll-mt-24">
+            <div id="about" className="h-full">
+              <About />
+            </div>
+          </FadeIn>
+        </div>
 
-        {/* ABOUT TILE */}
-        <FadeIn delay={0.1} className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
-          <div id="about">
-            <About />
-          </div>
-        </FadeIn>
-
-        {/* ACTIVITY TILE */}
-        <FadeIn delay={0.15} className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
+        {/* ACTIVITY - full width */}
+        <FadeIn delay={0.15} className="scroll-mt-24">
           <div id="activity">
             <GithubHeatmap />
           </div>
         </FadeIn>
 
-        {/* SKILLS TILE */}
-        <FadeIn className="md:col-span-2 xl:col-span-4 h-full scroll-mt-24">
+        {/* SKILLS - full width */}
+        <FadeIn className="scroll-mt-24">
           <div id="skills">
             <Skills />
           </div>
         </FadeIn>
 
-        {/* PROJECTS TILE */}
-        <FadeIn className="md:col-span-2 xl:col-span-4 h-full scroll-mt-24">
+        {/* PROJECTS - full width */}
+        <FadeIn className="scroll-mt-24">
           <div id="projects">
             <Projects />
           </div>
         </FadeIn>
 
-        {/* EXPERIENCE TILE */}
-        <FadeIn className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
-          <div id="experience">
-            <Experience />
-          </div>
-        </FadeIn>
+        {/* ROW: Experience + Positions */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+          <FadeIn className="h-full scroll-mt-24">
+            <div id="experience" className="h-full">
+              <Experience />
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.05} className="h-full scroll-mt-24">
+            <div id="positions" className="h-full">
+              <Positions />
+            </div>
+          </FadeIn>
+        </div>
 
-        {/* POSITIONS OF RESPONSIBILITY TILE */}
-        <FadeIn delay={0.05} className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
-          <div id="positions">
-            <Positions />
-          </div>
-        </FadeIn>
+        {/* ROW: Education + Research */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+          <FadeIn className="h-full scroll-mt-24">
+            <div id="education" className="h-full">
+              <Education />
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1} className="h-full scroll-mt-24">
+            <div id="research" className="h-full">
+              <Research />
+            </div>
+          </FadeIn>
+        </div>
 
-        {/* EDUCATION TILE */}
-        <FadeIn delay={0.1} className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
-          <div id="education">
-            <Education />
-          </div>
-        </FadeIn>
-
-        {/* BLOG TILE */}
-        <FadeIn className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
-          <div id="blog">
-            <Blog />
-          </div>
-        </FadeIn>
-
-        {/* RESEARCH TILE */}
-        <FadeIn delay={0.1} className="md:col-span-2 xl:col-span-2 h-full scroll-mt-24">
-          <div id="research">
-            <Research />
-          </div>
-        </FadeIn>
-
-        {/* LINKS TILE */}
-        <FadeIn className="md:col-span-1 xl:col-span-2 h-full scroll-mt-24">
-          <div id="links">
-            <Links />
-          </div>
-        </FadeIn>
-
-        {/* CONTACT TILE */}
-        <FadeIn delay={0.1} className="md:col-span-1 xl:col-span-2 h-full scroll-mt-24">
-          <div id="contact">
-            <Contact />
-          </div>
-        </FadeIn>
+        {/* ROW: Links + Contact */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+          <FadeIn className="h-full scroll-mt-24">
+            <div id="links" className="h-full">
+              <Links />
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1} className="h-full scroll-mt-24">
+            <div id="contact" className="h-full">
+              <Contact />
+            </div>
+          </FadeIn>
+        </div>
 
       </main>
 
