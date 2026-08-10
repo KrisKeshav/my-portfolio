@@ -14,29 +14,14 @@ export default function Positions() {
   return (
     <section className="h-full">
       <TerminalCard title="Positions of Responsibility" command={'git log --grep="positions-of-responsibility"'} label={`${positions.length} campus roles`} accent="amber">
-        <div className="p-6 md:p-8 space-y-6 font-mono text-xs">
+        <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 font-mono text-xs items-stretch">
           {positions.map((pos, idx) => {
-            const isLast = idx === positions.length - 1;
-
             return (
-              <div key={idx} className="flex items-stretch gap-5 relative group">
-                <div className="w-10 flex-shrink-0 flex justify-center relative select-none">
-                  {!isLast && (
-                    <div className="absolute top-6 bottom-[-24px] left-[19px] w-[2px] bg-gradient-to-b from-amber/40 to-amber/10 group-hover:from-amber group-hover:to-amber/40 transition-colors duration-500" />
-                  )}
-                  <div className="relative mt-1">
-                    <svg className="w-10 h-10 overflow-visible">
-                      <circle
-                        cx="20"
-                        cy="20"
-                        r="5"
-                        className="fill-amber transition-all duration-300 group-hover:r-[7]"
-                      />
-                    </svg>
-                  </div>
-                </div>
-
-                <div className="flex-1 rounded-xl p-5 transition-all duration-300 border border-border/60 bg-surface2/30 group-hover:border-amber/40 group-hover:bg-amber/5 group-hover:shadow-lg group-hover:shadow-amber/5">
+              <div
+                key={idx}
+                className="flex flex-col justify-between rounded-xl p-5 transition-all duration-300 border border-border/60 bg-surface2/30 hover:border-amber/40 hover:bg-amber/5 hover:shadow-lg hover:shadow-amber/5 group h-full"
+              >
+                <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2">
                       <div className="p-1 rounded bg-surface border border-border/60">
@@ -52,10 +37,10 @@ export default function Positions() {
                   </div>
 
                   <div className="mb-3">
-                    <h3 className="text-[15px] font-bold text-text group-hover:text-amber transition-colors duration-300">
+                    <h3 className="text-sm font-bold text-text group-hover:text-amber transition-colors duration-300">
                       {pos.role}
                     </h3>
-                    <p className="text-muted font-sans text-[13px] mt-0.5 font-medium text-text/80">
+                    <p className="text-muted font-sans text-xs mt-1 font-medium text-text/80">
                       {pos.org}
                     </p>
                   </div>
@@ -63,8 +48,8 @@ export default function Positions() {
                   <ul className="list-none space-y-2 pl-0 mt-4 border-t border-border/40 pt-4">
                     {pos.bullets.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-2 text-muted leading-relaxed font-sans">
-                        <span className="text-amber select-none mt-0.5 text-lg leading-none">›</span>
-                        <span className="text-[13px] text-text/90">{bullet}</span>
+                        <span className="text-amber select-none mt-0.5 text-base leading-none">›</span>
+                        <span className="text-xs text-text/90">{bullet}</span>
                       </li>
                     ))}
                   </ul>

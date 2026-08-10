@@ -14,7 +14,7 @@ import ScrollNav from "@/components/ScrollNav";
 
 const GithubHeatmap = dynamic(() => import("@/components/GithubHeatmap"), { ssr: false });
 
-const NAV_ITEMS = ["about", "research", "skills", "projects", "experience", "positions", "education", "links", "contact"];
+const NAV_ITEMS = ["about", "skills", "experience", "research", "projects", "education", "positions", "links", "contact"];
 
 export default function Home() {
   return (
@@ -51,75 +51,75 @@ export default function Home() {
       {/* BENTO GRID */}
       <main className="flex flex-col gap-4 md:gap-6">
 
-        {/* ROW: Hero + About */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
-          <FadeIn className="h-full min-h-[400px] xl:min-h-0">
-            <Hero />
-          </FadeIn>
-          <FadeIn delay={0.1} className="h-full scroll-mt-24">
+        {/* HERO TERMINAL */}
+        <FadeIn className="scroll-mt-24">
+          <Hero />
+        </FadeIn>
+
+        {/* ROW 1: About + Skills (first row two columns) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
+          <FadeIn className="h-full scroll-mt-24">
             <div id="about" className="h-full">
               <About />
             </div>
           </FadeIn>
+          <FadeIn delay={0.05} className="h-full scroll-mt-24">
+            <div id="skills" className="h-full">
+              <Skills />
+            </div>
+          </FadeIn>
         </div>
 
-        {/* RESEARCH - full width (High priority differentiator) */}
-        <FadeIn delay={0.15} className="scroll-mt-24">
-          <div id="research" className="h-full">
-            <Research />
-          </div>
-        </FadeIn>
-
-        {/* SKILLS - full width */}
-        <FadeIn className="scroll-mt-24">
-          <div id="skills">
-            <Skills />
-          </div>
-        </FadeIn>
-
-        {/* PROJECTS - full width */}
-        <FadeIn className="scroll-mt-24">
-          <div id="projects">
-            <Projects />
-          </div>
-        </FadeIn>
-
-        {/* ROW: Experience + Positions */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+        {/* ROW 2: Experience + Research (second row two columns) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
           <FadeIn className="h-full scroll-mt-24">
             <div id="experience" className="h-full">
               <Experience />
             </div>
           </FadeIn>
           <FadeIn delay={0.05} className="h-full scroll-mt-24">
-            <div id="positions" className="h-full">
-              <Positions />
+            <div id="research" className="h-full">
+              <Research />
             </div>
           </FadeIn>
         </div>
 
-        {/* ROW: Education + Activity */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+        {/* ROW 3: Projects (single column format with multiple projects in multiple columns) */}
+        <FadeIn className="scroll-mt-24">
+          <div id="projects" className="h-full">
+            <Projects />
+          </div>
+        </FadeIn>
+
+        {/* ROW 4: Education (+ Activity) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
           <FadeIn className="h-full scroll-mt-24">
             <div id="education" className="h-full">
               <Education />
             </div>
           </FadeIn>
-          <FadeIn delay={0.1} className="h-full scroll-mt-24">
+          <FadeIn delay={0.05} className="h-full scroll-mt-24">
             <div id="activity" className="h-full">
               <GithubHeatmap />
             </div>
           </FadeIn>
         </div>
 
-        {/* ROW: Links + Contact */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
+        {/* ROW 5: Position of Responsibility (single column format with sub-fields column-wise) */}
+        <FadeIn className="scroll-mt-24">
+          <div id="positions" className="h-full">
+            <Positions />
+          </div>
+        </FadeIn>
+
+        {/* ROW 6: Profiles/Links + Contacts (last row for now) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
           <FadeIn className="h-full scroll-mt-24">
             <div id="links" className="h-full">
               <Links />
             </div>
           </FadeIn>
-          <FadeIn delay={0.1} className="h-full scroll-mt-24">
+          <FadeIn delay={0.05} className="h-full scroll-mt-24">
             <div id="contact" className="h-full">
               <Contact />
             </div>
