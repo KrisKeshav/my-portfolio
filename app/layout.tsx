@@ -19,6 +19,7 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
   title: `${site.name} — Student & Developer`,
   description: site.tagline,
   keywords: ["Kris Keshav", "Student", "Developer", "IIT Roorkee", "Portfolio", "DSA", "System Design"],
