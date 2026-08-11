@@ -11,6 +11,8 @@ import Links from "@/components/Links";
 import Contact from "@/components/Contact";
 import FadeIn from "@/components/FadeIn";
 import ScrollNav from "@/components/ScrollNav";
+import ThemeToggle from "@/components/ThemeToggle";
+import BootSequence from "@/components/BootSequence";
 
 const GithubHeatmap = dynamic(() => import("@/components/GithubHeatmap"), { ssr: false });
 
@@ -19,6 +21,7 @@ const NAV_ITEMS = ["about", "skills", "experience", "research", "projects", "edu
 export default function Home() {
   return (
     <div className="mx-auto min-h-screen max-w-[1400px] p-4 md:p-6 lg:p-8">
+      <BootSequence />
       {/* Scroll Navigation Aid (Progress Bar & Side Dots) */}
       <ScrollNav />
 
@@ -40,10 +43,11 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex items-center gap-2 text-xs font-mono text-faint border-l border-border/60 pl-4 ml-1">
+          <div className="hidden lg:flex items-center gap-3 text-xs font-mono text-faint border-l border-border/60 pl-4 ml-1">
             <span>Press</span>
             <kbd className="px-1.5 py-0.5 rounded border border-border/80 bg-surface2 text-muted font-sans font-bold text-[10px]">⌘K</kbd>
             <span>to search</span>
+            <ThemeToggle />
           </div>
         </div>
       </nav>

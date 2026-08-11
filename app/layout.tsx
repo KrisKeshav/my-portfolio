@@ -44,7 +44,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plexMono.variable} ${plexSans.variable}`}>
+    <html lang="en" className={`${plexMono.variable} ${plexSans.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Prevents flash of wrong theme by reading localStorage before paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="light")document.documentElement.setAttribute("data-mode","light")}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className="font-sans">
         <VisitTracker />
         {children}

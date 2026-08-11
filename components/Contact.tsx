@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { site } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
+import CopyEmail from "./CopyEmail";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -158,7 +159,7 @@ export default function Contact() {
             <div className="space-y-4 pl-4 border-l border-cyan py-1">
               <div className="text-cyan font-bold">SUCCESS: Message delivered successfully.</div>
               <p className="text-muted font-sans max-w-md leading-relaxed">
-                Your message has been routed to <span className="text-text font-mono font-semibold">{site.email}</span>. I will review it and get back to you shortly.
+                Your message has been routed to <CopyEmail className="inline-flex text-xs" />. I will review it and get back to you shortly.
               </p>
               <button
                 onClick={() => setStatus("idle")}
@@ -173,7 +174,7 @@ export default function Contact() {
             <div className="space-y-4 pl-4 border-l border-[#FF6058] py-1">
               <div className="text-[#FF6058] font-bold">ERROR: Code 500 — Delivery failed.</div>
               <p className="text-muted font-sans max-w-md leading-relaxed">
-                Something went wrong. Please email directly at <a href={`mailto:${site.email}`} className="text-cyan hover:underline font-mono">{site.email}</a>.
+                Something went wrong. Please email directly at <CopyEmail className="inline-flex text-xs" />.
               </p>
               <button
                 onClick={() => setStatus("idle")}

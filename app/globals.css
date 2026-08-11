@@ -3,6 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-bg: #0A0C10;
+    --color-surface: #111419;
+    --color-surface2: #161A21;
+    --color-border: #22262E;
+    --color-text: #E6E8EB;
+    --color-muted: #8A93A0;
+    --color-faint: #4A5261;
+    --color-amber: #F0A84E;
+    --color-amberDim: #5C4520;
+    --color-cyan: #4DD8D3;
+    --color-violet: #B98CFF;
+  }
+
+  [data-mode="light"] {
+    --color-bg: #F5F3EF;
+    --color-surface: #FFFFFF;
+    --color-surface2: #EDE9E3;
+    --color-border: #D4CFC7;
+    --color-text: #1A1A1A;
+    --color-muted: #5A5A5A;
+    --color-faint: #9A9488;
+    --color-amber: #C07B1A;
+    --color-amberDim: #F5E6C8;
+    --color-cyan: #0E8A84;
+    --color-violet: #7B4FBF;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -11,6 +39,9 @@
   }
   ::selection {
     @apply bg-amberDim text-white;
+  }
+  [data-mode="light"] ::selection {
+    @apply bg-amberDim text-[#1A1A1A];
   }
   a {
     @apply text-cyan;

@@ -1,6 +1,8 @@
 import { site } from "@/lib/data";
 import Image from "next/image";
 import TerminalCard from "./TerminalCard";
+import CopyEmail from "./CopyEmail";
+import ResumePreview from "./ResumePreview";
 
 export default function About() {
   return (
@@ -28,9 +30,7 @@ export default function About() {
             <div className="w-full border-t border-border pt-3 text-xs space-y-2 text-muted">
               <div>
                 <span className="text-faint font-semibold">Email:</span>
-                <a href={`mailto:${site.email}`} className="block text-cyan hover:underline truncate">
-                  {site.email}
-                </a>
+                <CopyEmail className="block mt-0.5 text-xs" />
               </div>
             </div>
             <a
@@ -40,6 +40,7 @@ export default function About() {
             >
               Download CV
             </a>
+            <ResumePreview />
           </div>
           <div className="sm:col-span-2 xl:col-span-2 space-y-5 flex flex-col justify-center">
             <div className="space-y-2">
