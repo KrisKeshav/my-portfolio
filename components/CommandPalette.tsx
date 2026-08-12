@@ -192,7 +192,7 @@ export default function CommandPalette() {
                 <div className="text-muted">{site.bio}</div>
                 <div className="pt-2 flex gap-3">
                   <button
-                    onClick={() => window.open("/resnew.pdf", "_blank")}
+                    onClick={() => window.open("/Kris_Keshav_resume.pdf", "_blank")}
                     className="px-3 py-1 bg-amber text-bg rounded font-bold hover:opacity-90"
                   >
                     View Full PDF
@@ -444,14 +444,14 @@ export default function CommandPalette() {
               </Command.Group>
 
               <Command.Group heading={<div className="px-2 text-[10px] font-bold text-amber mb-1 tracking-wider uppercase mt-3">Actions & PDF</div>}>
-                <Command.Item onSelect={() => { window.open('/resnew.pdf', '_blank'); setOpen(false); }} className="flex items-center gap-2 px-3 py-2 text-xs text-text rounded-md cursor-pointer aria-selected:bg-surface2 aria-selected:text-amber">
+                <Command.Item onSelect={() => { window.open('/Kris_Keshav_resume.pdf', '_blank'); setOpen(false); }} className="flex items-center gap-2 px-3 py-2 text-xs text-text rounded-md cursor-pointer aria-selected:bg-surface2 aria-selected:text-amber">
                   <FileText className="w-3.5 h-3.5 text-amber" />
                   <span>View Resume PDF</span>
                 </Command.Item>
                 <Command.Item onSelect={() => {
                   const link = document.createElement('a');
-                  link.href = '/resnew.pdf';
-                  link.download = 'Kris_Keshav_Resume.pdf';
+                  link.href = '/Kris_Keshav_resume.pdf';
+                  link.download = 'Kris_Keshav_resume.pdf';
                   link.click();
                   setOpen(false);
                 }} className="flex items-center gap-2 px-3 py-2 text-xs text-text rounded-md cursor-pointer aria-selected:bg-surface2 aria-selected:text-amber">

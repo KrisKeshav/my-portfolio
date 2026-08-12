@@ -20,7 +20,7 @@ export default function ResumePreview() {
       {expanded && (
         <div className="mt-3 animate-fadeIn space-y-2">
           <div className="flex items-center justify-between px-1">
-            <span className="text-[10px] font-mono text-faint">resnew.pdf — inline viewer</span>
+            <span className="text-[10px] font-mono text-faint">Kris_Keshav_resume.pdf — inline viewer</span>
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setFullscreen(true)}
@@ -30,7 +30,7 @@ export default function ResumePreview() {
                 <Maximize2 className="w-3.5 h-3.5" />
               </button>
               <a
-                href="/resnew.pdf"
+                href="/Kris_Keshav_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1 text-muted hover:text-cyan transition-colors"
@@ -42,7 +42,7 @@ export default function ResumePreview() {
           </div>
           <div className="relative w-full h-[480px] rounded-xl overflow-hidden border border-border/80 bg-bg shadow-inner">
             <iframe
-              src="/resnew.pdf#toolbar=0"
+              src="/Kris_Keshav_resume.pdf#toolbar=0"
               className="w-full h-full border-0"
               title="Resume Preview"
             />
@@ -65,15 +65,15 @@ export default function ResumePreview() {
               </div>
               <div className="flex items-center gap-3">
                 <a
-                  href="/resnew.pdf"
-                  download="Kris_Keshav_Resume.pdf"
+                  href="/Kris_Keshav_resume.pdf"
+                  download="Kris_Keshav_resume.pdf"
                   className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-bold text-bg bg-cyan hover:bg-cyan/90 rounded-lg transition-colors no-underline"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download</span>
                 </a>
                 <a
-                  href="/resnew.pdf"
+                  href="/Kris_Keshav_resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-cyan bg-cyan/10 hover:bg-cyan/20 border border-cyan/30 rounded-lg transition-colors no-underline"
@@ -91,7 +91,7 @@ export default function ResumePreview() {
             </div>
             <div className="flex-1 bg-black/40 relative">
               <iframe
-                src="/resnew.pdf"
+                src="/Kris_Keshav_resume.pdf"
                 className="w-full h-full border-0"
                 title="Resume Full View"
               />

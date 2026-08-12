@@ -34,8 +34,8 @@ export default function About() {
               </div>
             </div>
             <a
-              href="/resnew.pdf"
-              download="Kris_Keshav_Resume.pdf"
+              href="/Kris_Keshav_resume.pdf"
+              download="Kris_Keshav_resume.pdf"
               className="w-full text-center py-2 px-3 rounded border border-amber/40 hover:border-amber bg-amberDim/10 hover:bg-amberDim/20 text-amber text-xs transition-colors duration-200 no-underline font-semibold"
             >
               Download CV
