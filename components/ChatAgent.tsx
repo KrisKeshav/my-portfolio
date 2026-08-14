@@ -89,10 +89,10 @@ export default function ChatAgent() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-4 w-80 sm:w-96 max-h-[500px] bg-surface/90 backdrop-blur-md border border-border/80 rounded-2xl shadow-xl flex flex-col overflow-hidden transition-all duration-300">
-          <div className="bg-surface2/80 p-4 border-b border-border/60 flex justify-between items-center">
+        <div className="mb-3 w-[calc(100vw-2rem)] sm:w-96 max-w-sm max-h-[75vh] sm:max-h-[500px] bg-surface/90 backdrop-blur-md border border-border/80 rounded-2xl shadow-xl flex flex-col overflow-hidden transition-all duration-300">
+          <div className="bg-surface2/80 p-3.5 sm:p-4 border-b border-border/60 flex justify-between items-center">
             <div className="flex items-center gap-2">
               <div className={`w-2.5 h-2.5 rounded-full ${apiAvailable ? "bg-cyan animate-pulse" : "bg-amber"}`} />
               <h3 className="font-mono text-sm text-text font-medium">Kris&apos;s AI Agent</h3>
@@ -102,15 +102,16 @@ export default function ChatAgent() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-faint hover:text-text transition-colors"
+              className="text-faint hover:text-text transition-colors p-1"
+              aria-label="Close chat"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
 
-          <div className="flex-1 p-4 overflow-y-auto min-h-[300px] max-h-[400px] flex flex-col gap-3 font-sans text-sm">
+          <div className="flex-1 p-3.5 sm:p-4 overflow-y-auto min-h-[260px] max-h-[360px] sm:max-h-[400px] flex flex-col gap-3 font-sans text-sm">
             {messages.length === 0 && (
-              <div className="text-center text-muted mt-10">
+              <div className="text-center text-muted mt-8 sm:mt-10">
                 <p>Hi! I&apos;m an AI assistant trained on Kris&apos;s portfolio.</p>
                 <p className="mt-2 text-xs">Ask me about his projects, experience, or how to use this site!</p>
               </div>
@@ -144,12 +145,13 @@ export default function ChatAgent() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me anything..."
-                className="flex-1 bg-transparent border-none text-sm p-3 outline-none text-text placeholder:text-muted"
+                className="flex-1 bg-transparent border-none text-sm p-2.5 sm:p-3 outline-none text-text placeholder:text-muted"
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="p-3 text-cyan hover:bg-cyan/10 disabled:opacity-50 disabled:hover:bg-transparent transition-colors"
+                className="p-2.5 sm:p-3 text-cyan hover:bg-cyan/10 disabled:opacity-50 disabled:hover:bg-transparent transition-colors"
+                aria-label="Send prompt"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
@@ -160,14 +162,15 @@ export default function ChatAgent() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
+        aria-label="Chat with AI assistant"
+        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
           isOpen ? "bg-surface2 border border-border/80 text-faint" : "bg-cyan text-bg hover:scale-105"
         }`}
       >
         {isOpen ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         ) : (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
         )}
       </button>
     </div>

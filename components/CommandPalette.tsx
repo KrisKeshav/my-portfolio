@@ -44,8 +44,14 @@ export default function CommandPalette() {
         setOpen((prev) => !prev);
       }
     };
+    const handleOpenEvent = () => setOpen(true);
+
     document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    window.addEventListener("open-command-palette", handleOpenEvent);
+    return () => {
+      document.removeEventListener("keydown", down);
+      window.removeEventListener("open-command-palette", handleOpenEvent);
+    };
   }, []);
 
   useEffect(() => {
