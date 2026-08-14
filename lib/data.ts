@@ -409,6 +409,7 @@ export const publications: Publication[] = [
 ];
 
 export const awards: string[] = [
+  "Presented our Research Paper at 6th IEEE International Conference on Sustainable Energy and Future Electric Transportation",
   "Ranked 4th in Flipkart Grid 6.0 (Team Event)",
   "East Zone Rank 4 in IQ Challenge (Kshitij 2022, IIT Kharagpur)",
   "AIR 18 in Technothlon'19 (Juniors)",
