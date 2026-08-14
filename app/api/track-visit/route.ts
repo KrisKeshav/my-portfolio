@@ -36,10 +36,11 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => ({}));
     const path = typeof body.path === "string" ? body.path : "/";
 
-    const ip =
+    const rawIp =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       req.headers.get("x-real-ip") ||
       "unknown";
+    const ip = rawIp.replace(/^::ffff:/, "").replace(/:\d+$/, "").trim();
     const userAgent = req.headers.get("user-agent") ?? "unknown";
     const refererHeader = req.headers.get("referer") || req.headers.get("referrer");
 
@@ -50,7 +51,7 @@ export async function POST(req: NextRequest) {
     });
 
     let location = "unknown";
-    if (ip !== "unknown") {
+    if (ip !== "unknown" && ip) {
       if (isLocalOrPrivateIp(ip)) {
         location = "local/dev";
       } else {
@@ -59,7 +60,13 @@ export async function POST(req: NextRequest) {
           const url = token
             ? `https://ipinfo.io/${ip}/json?token=${token}`
             : `https://ipinfo.io/${ip}/json`;
-          const geoRes = await fetch(url);
+          const geoRes = await fetch(url, {
+            headers: {
+              Accept: "application/json",
+              "User-Agent": "portfolio-tracker",
+            },
+            signal: AbortSignal.timeout(3000),
+          });
           if (geoRes.ok) {
             const geo = await geoRes.json();
             location =
