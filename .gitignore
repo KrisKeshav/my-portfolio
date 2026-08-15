@@ -9,3 +9,8 @@ next-env.d.ts
 
 ai_ml.tex
 test-resend.mjs
+
+# Antigravity agent context & rules
+AGENTS.md
+.agents/
+
