@@ -4,7 +4,7 @@ export const site = {
     "Aspiring Software engineer building toward DSA, system design, and exploring distributed infrastructure — learning in public.",
   location: "Roorkee, India",
   email: "kris_k@ee.iitr.ac.in",
-  bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, and AI. I have hands-on experience building full-stack applications, designing robust APIs, and implementing physics-informed machine learning models. I enjoy competitive programming and tackling complex system design challenges.",
+  bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, AI/ML and Optimization. Currently, I am doing hands on exploration of recent DevOps technologies like Docker, Kubernates, Kafka, Prometheus, Graffana along with learning Git commands and Shell Scripting. I also have experience of building Agentic solutions and possess in-depth understanding on working and applications if GenAI (specially Diffusion Models. I enjoy exploring new technologies and designing solutions for complex problems and doing something new.",
 };
 
 export const links = {
