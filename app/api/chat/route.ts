@@ -1,57 +1,85 @@
-import { google } from '@ai-sdk/google';
-import { streamText } from 'ai';
-import { site, education, experience, projects, skills, competitiveProgramming } from '@/lib/data';
+import { groq } from "@ai-sdk/groq";
+import { streamText } from "ai";
+import {
+  competitiveProgramming,
+  education,
+  experience,
+  links,
+  projects,
+  site,
+  skills,
+} from "@/lib/data";
 
 export const maxDuration = 30;
 
-const systemPrompt = `You are an AI assistant integrated into Kris Keshav's personal portfolio website. 
-Your goal is to answer questions about Kris Keshav's background, projects, skills, and experience accurately and concisely.
-You should also help visitors navigate the "Terminal Hero" section of the website if they ask how to use it. The terminal accepts commands like: about, skills, projects, experience, education, blog, research, links, contact, clear, and help.
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
 
-Here is the data you should base your answers on:
+const portfolioContext = [
+  `Profile: ${site.name}. ${site.bio} Based in ${site.location}.`,
+  `Contact: ${site.email}. GitHub: ${links.github}. LinkedIn: ${links.linkedin}.`,
+  `Education: ${education.map((item) => `${item.institution} (${item.detail}, ${item.dates})`).join("; ")}`,
+  `Experience: ${experience.map((item) => `${item.role} at ${item.org} (${item.dates}): ${item.bullets.join(" ")}`).join("; ")}`,
+  `Projects: ${projects.map((project) => `${project.name} [${project.category}, ${project.dates ?? "dates unavailable"}]: ${project.description} Technologies: ${project.tags.join(", ")}.`).join("\n")}`,
+  `Skills: Current stack: ${skills.currentStack.join(", ")}. Tools: ${skills.tools.join(", ")}. Focus: ${skills.highPriority.join(", ")}.`,
+  `Competitive programming: ${competitiveProgramming.platform}, handle ${competitiveProgramming.handle}, ${competitiveProgramming.rank}, max rating ${competitiveProgramming.maxRating}, ${competitiveProgramming.problemsSolved} problems solved.`,
+].join("\n\n");
 
-# Profile
-Name: ${site.name}
-Bio: ${site.bio}
-Tagline: ${site.tagline}
+const systemPrompt = `You are Kris Keshav's concise portfolio assistant for recruiters, collaborators, and friends.
 
-# Education
-${JSON.stringify(education)}
+Answer only from the portfolio context below. Never invent achievements, dates, links, or experience. If the answer is not in the context, say so plainly and invite the visitor to contact Kris at ${site.email}. Keep answers practical and brief: usually 2–5 sentences or short bullets.
 
-# Experience
-${JSON.stringify(experience)}
+You can help visitors navigate the page. The hero terminal supports: about, skills, projects, experience, education, research, links, contact, clear, and help. For detailed project information, direct them to the Projects section.
 
-# Projects
-${JSON.stringify(projects)}
+PORTFOLIO CONTEXT
+${portfolioContext}`;
 
-# Skills
-${JSON.stringify(skills)}
+function isChatMessage(value: unknown): value is ChatMessage {
+  if (!value || typeof value !== "object") return false;
 
-# Competitive Programming
-${JSON.stringify(competitiveProgramming)}
-
-# Instructions
-1. Be helpful, professional, and concise. Don't write essays.
-2. If asked something not in the data above, say you don't know, but encourage them to contact Kris directly at ${site.email}.
-3. If they ask about the terminal on the page, tell them to type commands like "projects" or "experience" into the terminal prompt.
-`;
+  const message = value as Record<string, unknown>;
+  return (
+    (message.role === "user" || message.role === "assistant") &&
+    typeof message.content === "string" &&
+    message.content.trim().length > 0 &&
+    message.content.length <= 1_000
+  );
+}
 
 export async function POST(req: Request) {
-  try {
-    const { messages } = await req.json();
+  if (!process.env.GROQ_API_KEY) {
+    return Response.json({ error: "Chat is not configured yet." }, { status: 503 });
+  }
 
-    const result = await streamText({
-      model: google('gemini-1.5-flash'),
+  try {
+    const body: unknown = await req.json();
+    const rawMessages = body && typeof body === "object" ? (body as { messages?: unknown }).messages : undefined;
+
+    if (!Array.isArray(rawMessages) || rawMessages.length === 0 || !rawMessages.every(isChatMessage)) {
+      return Response.json({ error: "Please send a valid chat message." }, { status: 400 });
+    }
+
+    const messages = rawMessages.slice(-8).map((message) => ({
+      role: message.role,
+      content: message.content.trim(),
+    }));
+
+    const result = streamText({
+      model: groq("openai/gpt-oss-20b"),
       system: systemPrompt,
       messages,
+      temperature: 0.2,
+      maxOutputTokens: 350,
     });
 
     return result.toTextStreamResponse();
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(
-      JSON.stringify({ error: message }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+  } catch (error) {
+    console.error("portfolio chat error:", error);
+    return Response.json(
+      { error: "The assistant is temporarily unavailable. Please try again shortly." },
+      { status: 503 },
     );
   }
 }

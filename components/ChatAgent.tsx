@@ -35,7 +35,7 @@ export default function ChatAgent() {
         setApiAvailable(false);
         setMessages((prev) => [...prev, {
           role: "assistant",
-          content: "🚧 This AI agent is currently under development. Please explore the site manually or use the terminal commands (type 'help' in the terminal above) to navigate! Stay tuned — this feature is coming soon.",
+          content: "I’m temporarily unavailable. Please try again shortly, or explore the portfolio using the terminal commands (type 'help' above).",
         }]);
         return;
       }
@@ -45,13 +45,14 @@ export default function ChatAgent() {
         setApiAvailable(false);
         setMessages((prev) => [...prev, {
           role: "assistant",
-          content: "🚧 This AI agent is currently under development. Stay tuned!",
+          content: "I’m temporarily unavailable. Please try again shortly.",
         }]);
         return;
       }
 
       const decoder = new TextDecoder();
       let assistantText = "";
+      setApiAvailable(true);
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
       while (true) {
@@ -65,14 +66,13 @@ export default function ChatAgent() {
         });
       }
 
-      // if we got an empty response, the API silently failed
       if (!assistantText.trim()) {
         setApiAvailable(false);
         setMessages((prev) => {
           const copy = [...prev];
           copy[copy.length - 1] = {
             role: "assistant",
-            content: "🚧 This AI agent is currently under development. Please explore the site manually or use the terminal commands (type 'help' in the terminal above) to navigate! Stay tuned — this feature is coming soon.",
+            content: "I’m temporarily unavailable. Please try again shortly, or explore the portfolio using the terminal commands (type 'help' above).",
           };
           return copy;
         });
@@ -81,7 +81,7 @@ export default function ChatAgent() {
       setApiAvailable(false);
       setMessages((prev) => [...prev, {
         role: "assistant",
-        content: "🚧 This AI agent is currently under development. Stay tuned!",
+        content: "I’m temporarily unavailable. Please try again shortly.",
       }]);
     } finally {
       setIsLoading(false);
