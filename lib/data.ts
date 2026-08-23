@@ -46,6 +46,7 @@ export type Experience = {
   dates: string;
   bullets: string[];
   certificateUrl?: string;
+  githubUrl?: string;
 };
 
 export const experience: Experience[] = [
@@ -61,6 +62,7 @@ export const experience: Experience[] = [
       "Also developed a Custom Multi-Lingual translator from scratch with dictionaries containing 34000+ words.",
     ],
     certificateUrl: "/accenture-internship-certificate.pdf",
+    githubUrl: "https://github.com/Udta-Haathi/PMA2",
   },
 ];
 

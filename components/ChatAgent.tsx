@@ -91,18 +91,18 @@ export default function ChatAgent() {
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-3 w-[calc(100vw-2rem)] sm:w-96 max-w-sm max-h-[75vh] sm:max-h-[500px] bg-surface/90 backdrop-blur-md border border-border/80 rounded-2xl shadow-xl flex flex-col overflow-hidden transition-all duration-300">
-          <div className="bg-surface2/80 p-3.5 sm:p-4 border-b border-border/60 flex justify-between items-center">
+        <div className="mb-3 w-[calc(100vw-2rem)] sm:w-96 max-w-sm max-h-[75vh] sm:max-h-[500px] bg-[#111419]/95 text-[#E6E8EB] backdrop-blur-xl border border-cyan/40 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.38),0_0_0_1px_rgba(77,216,211,0.12)] flex flex-col overflow-hidden transition-all duration-300">
+          <div className="bg-[#161A21]/95 p-3.5 sm:p-4 border-b border-[#303946] flex justify-between items-center">
             <div className="flex items-center gap-2">
               <div className={`w-2.5 h-2.5 rounded-full ${apiAvailable ? "bg-cyan animate-pulse" : "bg-amber"}`} />
-              <h3 className="font-mono text-sm text-text font-medium">Kris&apos;s AI Agent</h3>
+              <h3 className="font-mono text-sm text-[#E6E8EB] font-medium">Kris&apos;s AI Agent</h3>
               {!apiAvailable && (
                 <span className="text-[10px] text-amber bg-amber/10 px-2 py-0.5 rounded-full font-mono">beta</span>
               )}
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-faint hover:text-text transition-colors p-1"
+              className="text-[#8A93A0] hover:text-[#E6E8EB] transition-colors p-1"
               aria-label="Close chat"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -111,7 +111,7 @@ export default function ChatAgent() {
 
           <div className="flex-1 p-3.5 sm:p-4 overflow-y-auto min-h-[260px] max-h-[360px] sm:max-h-[400px] flex flex-col gap-3 font-sans text-sm">
             {messages.length === 0 && (
-              <div className="text-center text-muted mt-8 sm:mt-10">
+              <div className="text-center text-[#B5BDC9] mt-8 sm:mt-10">
                 <p>Hi! I&apos;m an AI assistant trained on Kris&apos;s portfolio.</p>
                 <p className="mt-2 text-xs">Ask me about his projects, experience, or how to use this site!</p>
               </div>
@@ -122,15 +122,15 @@ export default function ChatAgent() {
                 key={i}
                 className={`max-w-[85%] p-3 rounded-2xl whitespace-pre-wrap ${
                   m.role === "user"
-                    ? "bg-cyan/10 border border-cyan/20 text-text self-end rounded-tr-sm"
-                    : "bg-surface2/50 border border-border/40 text-text self-start rounded-tl-sm"
+                    ? "bg-cyan/15 border border-cyan/30 text-[#F3FBFB] self-end rounded-tr-sm"
+                    : "bg-[#202631] border border-[#303946] text-[#E6E8EB] self-start rounded-tl-sm"
                 }`}
               >
                 {m.content}
               </div>
             ))}
             {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
-              <div className="bg-surface2/50 border border-border/40 text-text self-start rounded-tl-sm max-w-[85%] p-3 rounded-2xl flex items-center gap-1">
+              <div className="bg-[#202631] border border-[#303946] text-[#E6E8EB] self-start rounded-tl-sm max-w-[85%] p-3 rounded-2xl flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan/60 animate-bounce" />
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan/60 animate-bounce" style={{ animationDelay: "150ms" }} />
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan/60 animate-bounce" style={{ animationDelay: "300ms" }} />
@@ -139,13 +139,13 @@ export default function ChatAgent() {
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSubmit} className="p-3 border-t border-border/60 bg-surface/50">
-            <div className="flex items-center bg-surface2/50 border border-border/60 rounded-xl overflow-hidden focus-within:border-cyan/50 transition-colors">
+          <form onSubmit={handleSubmit} className="p-3 border-t border-[#303946] bg-[#161A21]/90">
+            <div className="flex items-center bg-[#0D1015] border border-[#303946] rounded-xl overflow-hidden focus-within:border-cyan/60 transition-colors">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me anything..."
-                className="flex-1 bg-transparent border-none text-sm p-2.5 sm:p-3 outline-none text-text placeholder:text-muted"
+                className="flex-1 bg-transparent border-none text-sm p-2.5 sm:p-3 outline-none text-[#E6E8EB] placeholder:text-[#8A93A0]"
               />
               <button
                 type="submit"

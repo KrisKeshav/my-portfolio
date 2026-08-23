@@ -63,7 +63,7 @@ export default function ScrollNav() {
       {/* Side Dot Navigation (Floating Rail) */}
       <nav
         aria-label="Side section navigation"
-        className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-3 bg-surface/80 backdrop-blur-md p-2.5 px-2 rounded-full border border-border/80 shadow-xl"
+        className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-3 bg-surface/95 backdrop-blur-xl p-3 rounded-full border border-cyan/40 shadow-[0_12px_32px_rgba(0,0,0,0.28),0_0_0_1px_rgba(77,216,211,0.12)]"
       >
         {SECTIONS.map((sec) => {
           const isActive = activeSection === sec.id;
@@ -79,8 +79,8 @@ export default function ScrollNav() {
               <span
                 className={`block rounded-full transition-all duration-300 ${
                   isActive
-                    ? "w-3 h-3 bg-cyan shadow-[0_0_10px_rgba(77,216,211,0.6)] scale-110"
-                    : "w-2 h-2 bg-muted/40 hover:bg-amber hover:scale-125"
+                    ? "w-3 h-3 bg-cyan ring-2 ring-cyan/25 shadow-[0_0_12px_rgba(77,216,211,0.85)] scale-110"
+                    : "w-2.5 h-2.5 bg-muted/70 ring-1 ring-border hover:bg-amber hover:ring-amber/50 hover:scale-125"
                 }`}
               />
 

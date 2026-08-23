@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { experience } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
-import { Award, FileText, ExternalLink, Download, X, Eye, ChevronDown, ChevronUp, CheckCircle2 } from "lucide-react";
+import { Award, FileText, ExternalLink, Download, X, Eye, ChevronDown, ChevronUp, CheckCircle2, Github } from "lucide-react";
 
 export default function Experience() {
   const [selectedCert, setSelectedCert] = useState<{ title: string; url: string } | null>(null);
@@ -78,6 +78,19 @@ export default function Experience() {
                             <span className="hidden sm:inline">Fullscreen</span>
                           </button>
                         </div>
+                      )}
+                      {item.githubUrl && (
+                        <a
+                          href={item.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-sans font-medium text-violet bg-violet/10 hover:bg-violet/20 border border-violet/30 rounded-lg transition-all"
+                          title="View internship work repository"
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                          <span>Internship Repo</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
                       )}
                     </div>
                     <div className="text-muted flex items-center gap-2 mt-1 font-sans text-[13px]">
