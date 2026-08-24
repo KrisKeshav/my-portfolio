@@ -254,7 +254,14 @@ export default function CommandPalette() {
       case "whoami":
         newEntries.push({
           type: "output",
-          content: <div className="text-xs font-mono text-text">visitor@kris-portfolio (Role: Guest Recruiter/Developer, Session: Active)</div>,
+          content: (
+            <div className="space-y-2 text-xs font-mono text-text p-2.5 bg-surface2/40 rounded-lg">
+              <div className="text-cyan font-bold">$ whoami</div>
+              <p>Kris Keshav — Electrical Engineering, IIT Roorkee. Eager to learn and build.</p>
+              <p>Plays everything decently: chess, cricket, football, table tennis, badminton. Approaches code the same way — show up, figure it out.</p>
+              <p className="text-violet">Curious by default. Ask me anything.</p>
+            </div>
+          ),
         });
         break;
 

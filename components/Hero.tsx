@@ -5,11 +5,12 @@ import { site } from "@/lib/data";
 
 const TERMINAL_LINES = [
   { kind: "k", text: "$ whoami" },
-  { kind: "v", text: site.name + " — Student @ IIT Roorkee | Eager to learn & build" },
-  { kind: "c", text: "# building toward: DSA · System Design · Distributed Infra" },
-  { kind: "k", text: "$ cat focus.txt" },
-  { kind: "v", text: site.tagline },
-  { kind: "tag", text: "[ status: active — portfolio loaded successfully ]" },
+  { kind: "empty", text: "" },
+  { kind: "v", text: "Kris Keshav — Electrical Engineering, IIT Roorkee. Eager to learn and build." },
+  { kind: "empty", text: "" },
+  { kind: "v", text: "Plays everything decently: chess, cricket, football, table tennis, badminton. Approaches code the same way — show up, figure it out." },
+  { kind: "empty", text: "" },
+  { kind: "tag", text: "Curious by default. Ask me anything." },
 ] as const;
 
 export default function Hero() {
@@ -50,7 +51,13 @@ export default function Hero() {
     const newLogs = [...commandLogs, { kind: "k", text: `visitor@keshav-portfolio:~$ ${inputValue}` }];
 
     if (cmd === "help") {
-      newLogs.push({ kind: "c", text: "Available commands: about | skills | projects | experience | education | research | links | contact | clear | help" });
+      newLogs.push({ kind: "c", text: "Available commands: whoami | about | skills | projects | experience | education | research | links | contact | clear | help" });
+    } else if (cmd === "whoami") {
+      newLogs.push({ kind: "v", text: "Kris Keshav — Electrical Engineering, IIT Roorkee. Eager to learn and build." });
+      newLogs.push({ kind: "empty", text: "" });
+      newLogs.push({ kind: "v", text: "Plays everything decently: chess, cricket, football, table tennis, badminton. Approaches code the same way — show up, figure it out." });
+      newLogs.push({ kind: "empty", text: "" });
+      newLogs.push({ kind: "tag", text: "Curious by default. Ask me anything." });
     } else if (["about", "skills", "projects", "experience", "education", "research", "links", "contact"].includes(cmd)) {
       newLogs.push({ kind: "v", text: `Scrolling to #${cmd}...` });
       const element = document.getElementById(cmd);
@@ -81,12 +88,12 @@ export default function Hero() {
       </div>
       <div className="px-6 py-8 font-mono text-sm leading-8 select-none flex-1 overflow-y-auto">
         {rendered.map((l, i) => (
-          <div key={i} className={colorFor(l.kind)}>
-            {l.text}
+          <div key={i} className={`${colorFor(l.kind)} ${l.text === "" ? "h-3" : ""}`}>
+            {l.text || "\u00A0"}
           </div>
         ))}
         {current && (
-          <div className={colorFor(current.kind)}>
+          <div className={`${colorFor(current.kind)} ${current.text === "" ? "h-3" : ""}`}>
             {currentSlice}
             <span className="inline-block w-2.5 h-5 bg-amber align-middle animate-blink" />
           </div>
