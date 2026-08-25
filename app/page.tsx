@@ -109,7 +109,7 @@ export default function Home() {
       <footer className="text-center font-mono text-xs sm:text-sm text-faint py-10 md:py-12 mt-10 md:mt-12 space-y-3 px-4">
         <div className="text-muted">built with <span className="text-amber">$CURIOSITY</span>, one commit a day</div>
         <div className="max-w-md mx-auto leading-relaxed">
-          This site logs basic visit analytics (page, approximate location, time).
+          This site logs basic visit analytics (page, approximate location, screen resolution, time).
           No cookies, no personal profile stored.
         </div>
       </footer>

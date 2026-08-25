@@ -25,6 +25,19 @@ function isLocalOrPrivateIp(ip: string): boolean {
   return false;
 }
 
+function formatScreenSize(value: unknown): string {
+  if (typeof value !== "string") return "unknown";
+
+  const match = /^(\d{1,5})x(\d{1,5})$/.exec(value);
+  if (!match) return "unknown";
+
+  const width = Number(match[1]);
+  const height = Number(match[2]);
+  if (width < 1 || width > 20_000 || height < 1 || height > 20_000) return "unknown";
+
+  return `${width} × ${height}`;
+}
+
 export async function POST(req: NextRequest) {
   try {
     if (!process.env.RESEND_API_KEY || !process.env.NOTIFY_EMAIL) {
@@ -35,6 +48,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json().catch(() => ({}));
     const path = typeof body.path === "string" ? body.path : "/";
+    const screenSize = formatScreenSize(body.screenSize);
 
     const rawIp =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -114,6 +128,7 @@ export async function POST(req: NextRequest) {
         `Page: ${path}`,
         `Approx. location: ${location}`,
         `Browser/OS: ${clientInfo}`,
+        `Screen resolution: ${screenSize}`,
         `Referrer: ${referrer}`,
         `Time (IST): ${time}`,
       ].join("\n"),
