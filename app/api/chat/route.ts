@@ -1,11 +1,13 @@
 import { groq } from "@ai-sdk/groq";
 import { streamText } from "ai";
 import {
+  awards,
   competitiveProgramming,
   education,
   experience,
   links,
   projects,
+  publications,
   site,
   skills,
 } from "@/lib/data";
@@ -25,6 +27,8 @@ const portfolioContext = [
   `Projects: ${projects.map((project) => `${project.name} [${project.category}, ${project.dates ?? "dates unavailable"}]: ${project.description} Technologies: ${project.tags.join(", ")}.`).join("\n")}`,
   `Skills: Current stack: ${skills.currentStack.join(", ")}. Tools: ${skills.tools.join(", ")}. Focus: ${skills.highPriority.join(", ")}.`,
   `Competitive programming: ${competitiveProgramming.platform}, handle ${competitiveProgramming.handle}, ${competitiveProgramming.rank}, max rating ${competitiveProgramming.maxRating}, ${competitiveProgramming.problemsSolved} problems solved.`,
+  `Research & Publications: ${publications.map((p) => `"${p.title}" (${p.venue}): ${p.description} ${p.bullets.join(" ")}${p.arxiv ? ` arXiv: ${p.arxiv}` : ""}${p.github ? ` GitHub: ${p.github}` : ""}`).join("; ")}`,
+  `Awards: ${awards.join("; ")}`,
 ].join("\n\n");
 
 const systemPrompt = `You are Kris Keshav's concise portfolio assistant for recruiters, collaborators, and friends.

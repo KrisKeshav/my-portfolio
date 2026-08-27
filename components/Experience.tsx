@@ -1,18 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  Award, 
-  ChevronUp, 
-  ChevronDown, 
-  Eye, 
-  GitBranch, 
-  ExternalLink, 
-  CheckCircle2, 
-  FileText, 
-  Download, 
-  X 
-} from "lucide-react";
+import { Award, ChevronUp, ChevronDown, Eye, GitBranch, ExternalLink, CheckCircle2, FileText, Download, X } from "lucide-react";
 import { experience } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
 
