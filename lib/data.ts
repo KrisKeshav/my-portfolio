@@ -57,8 +57,8 @@ export const experience: Experience[] = [
     location: "Bengaluru, India",
     dates: "May 2026 – Jul 2026",
     bullets: [
-      "Reduced manual PMO effort by automating resource tracking, allocation, and escalation workflows end-to-end.",
-      "Incorporated authentication, agents integration with multi-portal UI replacing manual spreadsheet tracking.",
+      "Built an agentic PMO resource management system in FastAPI that autonomously handles demand creation, skill-based resource matching with recommendation ranking, and overlap-aware future blocking — replacing end-to-end manual spreadsheet workflows.",
+      "Designed role-based dashboards (PMO, Project Lead, Employee) with session auth, automated CV reminder agents, extension alert escalations, and three-month availability calendars for proactive resource planning.",
       "Also developed a Custom Multi-Lingual translator from scratch with dictionaries containing 34000+ words.",
     ],
     certificateUrl: "/accenture-internship-certificate.pdf",
@@ -389,6 +389,7 @@ export type Publication = {
   bullets: string[];
   github?: string;
   arxiv?: string;
+  ieeeUrl?: string;
   paperPdf?: string;
   certificatePdf?: string;
 };
@@ -396,7 +397,7 @@ export type Publication = {
 export const publications: Publication[] = [
   {
     title: "Fast Diffusion with Physics-Correction for ACOPF",
-    venue: "Accepted at IEEE SEFET 2026",
+    venue: "Published in IEEE Xplore (SEFET 2026)",
     description:
       "Co-authored a physics-guided diffusion framework using DDIM for scalable ACOPF synthetic data generation.",
     bullets: [
@@ -405,6 +406,7 @@ export const publications: Publication[] = [
     ],
     github: "https://github.com/PSquare-Lab/DDIM_OPF",
     arxiv: "https://arxiv.org/abs/2602.03020",
+    ieeeUrl: "https://ieeexplore.ieee.org/document/11687130",
     paperPdf: "/paper-preprint.pdf",
     certificatePdf: "/presentation-certificate.pdf",
   },

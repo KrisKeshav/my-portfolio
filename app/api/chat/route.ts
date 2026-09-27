@@ -27,7 +27,7 @@ const portfolioContext = [
   `Projects: ${projects.map((project) => `${project.name} [${project.category}, ${project.dates ?? "dates unavailable"}]: ${project.description} Technologies: ${project.tags.join(", ")}.`).join("\n")}`,
   `Skills: Current stack: ${skills.currentStack.join(", ")}. Tools: ${skills.tools.join(", ")}. Focus: ${skills.highPriority.join(", ")}.`,
   `Competitive programming: ${competitiveProgramming.platform}, handle ${competitiveProgramming.handle}, ${competitiveProgramming.rank}, max rating ${competitiveProgramming.maxRating}, ${competitiveProgramming.problemsSolved} problems solved.`,
-  `Research & Publications: ${publications.map((p) => `"${p.title}" (${p.venue}): ${p.description} ${p.bullets.join(" ")}${p.arxiv ? ` arXiv: ${p.arxiv}` : ""}${p.github ? ` GitHub: ${p.github}` : ""}`).join("; ")}`,
+  `Research & Publications: ${publications.map((p) => `"${p.title}" (${p.venue}): ${p.description} ${p.bullets.join(" ")}${p.ieeeUrl ? ` IEEE Xplore: ${p.ieeeUrl}` : ""}${p.arxiv ? ` arXiv: ${p.arxiv}` : ""}${p.github ? ` GitHub: ${p.github}` : ""}`).join("; ")}`,
   `Awards: ${awards.join("; ")}`,
 ].join("\n\n");
 

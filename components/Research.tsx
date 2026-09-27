@@ -101,6 +101,16 @@ export default function Research() {
                     git_repo <span className="text-faint">→</span>
                   </a>
                 )}
+                {pub.ieeeUrl && (
+                  <a
+                    href={pub.ieeeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[11px] text-[#3b82f6] hover:text-[#60a5fa] transition-colors font-semibold no-underline"
+                  >
+                    ieee_xplore <span className="text-faint">→</span>
+                  </a>
+                )}
                 {pub.arxiv && (
                   <a
                     href={pub.arxiv}
