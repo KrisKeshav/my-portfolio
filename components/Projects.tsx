@@ -70,7 +70,17 @@ export default function Projects() {
                   <div
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
-                    className="group relative border border-border/60 hover:border-cyan/40 bg-surface2/30 hover:bg-surface2/60 rounded-xl p-5 md:p-6 transition-all duration-300 font-mono text-xs leading-relaxed cursor-pointer flex flex-col justify-between h-full"
+                    onKeyDown={(e) => {
+                      if (e.target !== e.currentTarget) return;
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedProject(project);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open details for ${project.name}`}
+                    className="group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan/60 border border-border/60 hover:border-cyan/40 bg-surface2/30 hover:bg-surface2/60 rounded-xl p-5 md:p-6 transition-all duration-300 font-mono text-xs leading-relaxed cursor-pointer flex flex-col justify-between h-full"
                   >
                     <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                     

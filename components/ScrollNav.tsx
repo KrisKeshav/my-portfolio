@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 
+// keep in page order, the active-section check walks this list bottom-up
 const SECTIONS = [
   { id: "about", label: "About" },
-  { id: "research", label: "Research" },
   { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
-  { id: "positions", label: "Positions" },
+  { id: "research", label: "Research" },
+  { id: "projects", label: "Projects" },
+  { id: "achievements", label: "Achievements" },
   { id: "education", label: "Education" },
+  { id: "positions", label: "Positions" },
   { id: "links", label: "Links" },
   { id: "contact", label: "Contact" },
 ];
@@ -28,10 +30,9 @@ export default function ScrollNav() {
       }
 
       // 2. Identify active section based on scroll position
-      const scrollPosition = window.scrollY + 200;
       for (let i = SECTIONS.length - 1; i >= 0; i--) {
         const sectionEl = document.getElementById(SECTIONS[i].id);
-        if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
+        if (sectionEl && sectionEl.getBoundingClientRect().top <= 200) {
           setActiveSection(SECTIONS[i].id);
           break;
         }

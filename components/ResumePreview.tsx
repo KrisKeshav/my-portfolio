@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Eye, EyeOff, Download, ExternalLink, X, Maximize2 } from "lucide-react";
+import { useEscapeKey } from "@/lib/useEscapeKey";
 
 export default function ResumePreview() {
   const [expanded, setExpanded] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  useEscapeKey(fullscreen, () => setFullscreen(false));
 
   return (
     <>
@@ -83,6 +85,7 @@ export default function ResumePreview() {
                 </a>
                 <button
                   onClick={() => setFullscreen(false)}
+                  aria-label="Close resume viewer"
                   className="p-1.5 text-muted hover:text-cyan hover:bg-surface border border-border/50 rounded-lg transition-colors"
                 >
                   <X className="w-4 h-4" />

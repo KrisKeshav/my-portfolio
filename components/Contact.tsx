@@ -42,14 +42,16 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
 
-    await runFakeTerminalProgress();
-
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      // the progress lines are just for show, so let the real request run alongside them
+      const [response] = await Promise.all([
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }),
+        runFakeTerminalProgress(),
+      ]);
 
       if (response.ok) {
         setStatus("success");
@@ -84,6 +86,8 @@ export default function Contact() {
                     id="contact-name"
                     type="text"
                     required
+                    maxLength={100}
+                    autoComplete="name"
                     value={formData.name}
                     onChange={(e) => {
                       setFormData({ ...formData, name: e.target.value });
@@ -103,6 +107,8 @@ export default function Contact() {
                     id="contact-email"
                     type="email"
                     required
+                    maxLength={200}
+                    autoComplete="email"
                     value={formData.email}
                     onChange={(e) => {
                       setFormData({ ...formData, email: e.target.value });
@@ -121,6 +127,7 @@ export default function Contact() {
                   <textarea
                     id="contact-message"
                     required
+                    maxLength={5000}
                     rows={4}
                     value={formData.message}
                     onChange={(e) => {
@@ -172,7 +179,7 @@ export default function Contact() {
 
           {status === "error" && (
             <div className="space-y-4 pl-4 border-l border-[#FF6058] py-1">
-              <div className="text-[#FF6058] font-bold">ERROR: Code 500 — Delivery failed.</div>
+              <div className="text-[#FF6058] font-bold">ERROR: Delivery failed.</div>
               <p className="text-muted font-sans max-w-md leading-relaxed">
                 Something went wrong. Please email directly at <CopyEmail className="inline-flex text-xs" />.
               </p>

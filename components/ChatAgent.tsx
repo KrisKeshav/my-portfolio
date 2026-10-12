@@ -31,6 +31,15 @@ export default function ChatAgent() {
         body: JSON.stringify({ messages: updated }),
       });
 
+      if (res.status === 429) {
+        const data = await res.json().catch(() => null);
+        setMessages((prev) => [...prev, {
+          role: "assistant",
+          content: data?.error ?? "You're sending messages too quickly. Please wait a moment and try again.",
+        }]);
+        return;
+      }
+
       if (!res.ok) {
         setApiAvailable(false);
         setMessages((prev) => [...prev, {
@@ -144,6 +153,8 @@ export default function ChatAgent() {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                maxLength={1000}
+                aria-label="Message the portfolio assistant"
                 placeholder="Ask me anything..."
                 className="flex-1 bg-transparent border-none text-sm p-2.5 sm:p-3 outline-none text-[#E6E8EB] placeholder:text-[#8A93A0]"
               />

@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const body = await req.json().catch(() => ({}));
-    const path = typeof body.path === "string" ? body.path : "/";
+    const path = typeof body.path === "string" ? body.path.replace(/[\r\n]+/g, "").slice(0, 200) || "/" : "/";
     const screenSize = formatScreenSize(body.screenSize);
 
     const rawIp =

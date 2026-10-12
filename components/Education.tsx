@@ -30,7 +30,7 @@ export default function Education() {
     },
     {
       hash: "f6c8d0e",
-      role: "Matriculate (Class X)",
+      role: "Matriculation (Class X)",
       org: education[2].institution,
       location: "Patna, India",
       dates: education[2].dates,

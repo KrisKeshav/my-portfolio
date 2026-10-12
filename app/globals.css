@@ -48,6 +48,10 @@
   }
 }
 
+html[data-booted] .boot-overlay {
+  display: none;
+}
+
 [data-theme="matrix"] {
   filter: hue-rotate(90deg) contrast(1.1);
 }

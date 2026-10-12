@@ -19,7 +19,8 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+  metadataBase: new URL(site.url),
+  alternates: { canonical: "/" },
   title: `${site.name} — Student & Developer`,
   description: site.tagline,
   keywords: ["Kris Keshav", "Student", "Developer", "IIT Roorkee", "Portfolio", "DSA", "System Design"],
@@ -47,12 +48,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plexMono.variable} ${plexSans.variable}`} suppressHydrationWarning>
       <head>
-        {/* Prevents flash of wrong theme by reading localStorage before paint */}
+        {/* Runs before paint: applies saved theme, and skips the boot screen on repeat visits / reduced motion */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="light")document.documentElement.setAttribute("data-mode","light")}catch(e){}})()`,
+            __html: `(function(){var d=document.documentElement;try{var t=localStorage.getItem("theme");if(t==="light")d.setAttribute("data-mode","light")}catch(e){}try{if(sessionStorage.getItem("booted")||matchMedia("(prefers-reduced-motion: reduce)").matches)d.setAttribute("data-booted","")}catch(e){d.setAttribute("data-booted","")}})()`,
           }}
         />
+        <noscript>
+          <style>{`.boot-overlay{display:none!important}`}</style>
+        </noscript>
       </head>
       <body className="font-sans">
         <VisitTracker />

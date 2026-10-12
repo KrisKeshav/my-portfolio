@@ -11,6 +11,13 @@ export default function ThemeToggle() {
     const initial = stored || "dark";
     setMode(initial);
     document.documentElement.setAttribute("data-mode", initial === "light" ? "light" : "");
+
+    // navbar renders two toggles (desktop + mobile), keep both icons in sync
+    const observer = new MutationObserver(() =>
+      setMode(document.documentElement.getAttribute("data-mode") === "light" ? "light" : "dark"),
+    );
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-mode"] });
+    return () => observer.disconnect();
   }, []);
 
   const toggle = () => {

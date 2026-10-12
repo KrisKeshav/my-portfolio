@@ -7,6 +7,7 @@ import Experience from "@/components/Experience";
 import Positions from "@/components/Positions";
 import Education from "@/components/Education";
 import Research from "@/components/Research";
+import Achievements from "@/components/Achievements";
 import Links from "@/components/Links";
 import Contact from "@/components/Contact";
 import FadeIn from "@/components/FadeIn";
@@ -69,6 +70,12 @@ export default function Home() {
           </div>
         </FadeIn>
 
+        <FadeIn className="h-full">
+          <div id="achievements" className="h-full scroll-mt-20 md:scroll-mt-24">
+            <Achievements />
+          </div>
+        </FadeIn>
+
         {/* ROW 4: Education (+ Activity) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
           <FadeIn className="h-full">
@@ -109,8 +116,8 @@ export default function Home() {
       <footer className="text-center font-mono text-xs sm:text-sm text-faint py-10 md:py-12 mt-10 md:mt-12 space-y-3 px-4">
         <div className="text-muted">built with <span className="text-amber">$CURIOSITY</span>, one commit a day</div>
         <div className="max-w-md mx-auto leading-relaxed">
-          This site logs basic visit analytics (page, approximate location, screen resolution, time).
-          No cookies, no personal profile stored.
+          This site logs basic visit analytics (page, approximate location, browser/OS, screen resolution,
+          referring site, time). No cookies, no personal profile stored.
         </div>
       </footer>
     </div>

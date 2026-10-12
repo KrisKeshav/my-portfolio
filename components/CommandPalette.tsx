@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
 import { site, projects, skills, links } from "@/lib/data";
+import { useEscapeKey } from "@/lib/useEscapeKey";
 import { 
   User, Terminal, Code2, Briefcase, GraduationCap, 
   PenTool, FlaskConical, Link as LinkIcon, Mail, 
@@ -36,6 +37,8 @@ export default function CommandPalette() {
 
   const logEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const close = useCallback(() => setOpen(false), []);
+  useEscapeKey(open, close);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -271,7 +274,7 @@ export default function CommandPalette() {
           content: (
             <div className="space-y-1 text-xs font-mono text-text p-2 bg-surface2/40 rounded-lg">
               <div>Email: <a href={`mailto:${site.email}`} className="text-cyan underline">{site.email}</a></div>
-              <div>GitHub: <a href={links.github} target="_blank" className="text-cyan underline">KrisKeshav</a></div>
+              <div>GitHub: <a href={links.github} target="_blank" rel="noopener noreferrer" className="text-cyan underline">KrisKeshav</a></div>
             </div>
           ),
         });

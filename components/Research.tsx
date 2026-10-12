@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { publications } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
+import { useEscapeKey } from "@/lib/useEscapeKey";
 import { FileText, Award, ExternalLink, Download, Eye, X, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Research() {
@@ -10,11 +11,12 @@ export default function Research() {
   const [activeTab, setActiveTab] = useState<"paper" | "certificate">("paper");
   const [isEmbeddedOpen, setIsEmbeddedOpen] = useState(false);
   const [selectedModalPdf, setSelectedModalPdf] = useState<{ title: string; url: string } | null>(null);
+  useEscapeKey(!!selectedModalPdf, () => setSelectedModalPdf(null));
 
-  const bibtex = `@article{keshav2026fast,
+  const bibtex = `@inproceedings{keshav2026fast,
   title={Fast Diffusion with Physics-Correction for ACOPF},
   author={Keshav, Kris and others},
-  journal={IEEE SEFET},
+  booktitle={6th IEEE International Conference on Sustainable Energy and Future Electric Transportation (SEFET)},
   year={2026}
 }`;
 
@@ -220,6 +222,7 @@ export default function Research() {
                 </a>
                 <button
                   onClick={() => setSelectedModalPdf(null)}
+                  aria-label="Close document viewer"
                   className="p-1.5 text-muted hover:text-cyan hover:bg-surface border border-border/50 rounded-lg transition-colors"
                 >
                   <X className="w-4 h-4" />

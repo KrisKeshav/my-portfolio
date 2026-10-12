@@ -4,10 +4,12 @@ import { useState } from "react";
 import { Award, ChevronUp, ChevronDown, Eye, GitBranch, ExternalLink, CheckCircle2, FileText, Download, X } from "lucide-react";
 import { experience } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
+import { useEscapeKey } from "@/lib/useEscapeKey";
 
 export default function Experience() {
   const [selectedCert, setSelectedCert] = useState<{ title: string; url: string } | null>(null);
   const [inlineCertOpen, setInlineCertOpen] = useState<Record<string, boolean>>({});
+  useEscapeKey(!!selectedCert, () => setSelectedCert(null));
 
   const toggleInlineCert = (hash: string) => {
     setInlineCertOpen((prev) => ({ ...prev, [hash]: !prev[hash] }));
@@ -33,7 +35,7 @@ export default function Experience() {
                         cx="20"
                         cy="20"
                         r="5"
-                        className="fill-cyan transition-all duration-300 group-hover:r-[7]"
+                        className="fill-cyan transition-all duration-300"
                       />
                     </svg>
                   </div>
@@ -181,6 +183,7 @@ export default function Experience() {
                 </a>
                 <button
                   onClick={() => setSelectedCert(null)}
+                  aria-label="Close certificate viewer"
                   className="p-1.5 text-muted hover:text-cyan hover:bg-surface border border-border/50 rounded-lg transition-colors"
                 >
                   <X className="w-4 h-4" />

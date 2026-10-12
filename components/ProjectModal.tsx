@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Project } from "@/lib/data";
 import { X, Code2, Layers, Activity, GitBranch, ExternalLink, Check, Copy } from "lucide-react";
+import { useEscapeKey } from "@/lib/useEscapeKey";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -13,22 +14,25 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [activeTab, setActiveTab] = useState<"overview" | "architecture" | "code">("overview");
   const [copied, setCopied] = useState(false);
 
+  useEscapeKey(!!project, onClose);
+
+  // each project should open on its overview, not whatever tab the last one was left on
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+    setActiveTab("overview");
+    setCopied(false);
+  }, [project?.id]);
 
   if (!project) return null;
 
   const handleCopyCode = () => {
-    if (project.codeSnippet?.code) {
-      navigator.clipboard.writeText(project.codeSnippet.code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
+    if (!project.codeSnippet?.code) return;
+    navigator.clipboard
+      .writeText(project.codeSnippet.code)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(() => {});
   };
 
   return (
@@ -36,7 +40,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       {/* Backdrop click dismiss */}
       <div className="fixed inset-0" onClick={onClose} />
 
-      <div className="relative w-full max-w-3xl max-h-[85vh] bg-surface border border-border/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col font-sans z-10">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={project.name}
+        className="relative w-full max-w-3xl max-h-[85vh] bg-surface border border-border/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col font-sans z-10"
+      >
         {/* Modal Header */}
         <div className="p-5 md:p-6 bg-surface2/60 border-b border-border/60 flex items-start justify-between gap-4">
           <div>

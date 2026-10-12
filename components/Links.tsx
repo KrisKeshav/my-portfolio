@@ -2,7 +2,8 @@ import { links, competitiveProgramming } from "@/lib/data";
 import TerminalCard from "./TerminalCard";
 
 export default function Links() {
-  const ratingProgress = (competitiveProgramming.maxRating / 2000) * 100;
+  // progress toward Expert, which is what the label under the bar says
+  const ratingProgress = Math.min(100, (competitiveProgramming.maxRating / 1600) * 100);
 
   return (
     <section className="h-full">

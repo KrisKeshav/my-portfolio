@@ -1,10 +1,11 @@
 export const site = {
   name: "Kris Keshav",
+  url: "https://my-portfolio-web-tau-black.vercel.app",
   tagline:
-    "Aspiring Software engineer building toward DSA, system design, and exploring distributed infrastructure — learning in public.",
+    "Aspiring software engineer building toward DSA, system design, and exploring distributed infrastructure — learning in public.",
   location: "Roorkee, India",
   email: "kris_k@ee.iitr.ac.in",
-  bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, AI/ML and Optimization. Currently, I am doing hands on exploration of recent DevOps technologies like Docker, Kubernates, Kafka, Prometheus, Graffana along with learning Git commands and Shell Scripting. I also have experience of building Agentic solutions and possess in-depth understanding on working and applications of GenAI (specially Diffusion Models). I enjoy exploring new technologies and designing solutions for complex problems and doing something new.",
+  bio: "I am a B.Tech student in Electrical Engineering at IIT Roorkee with a strong focus on software engineering, distributed systems, AI/ML and Optimization. Currently, I am doing hands on exploration of recent DevOps technologies like Docker, Kubernetes, Kafka, Prometheus, Grafana along with learning Git commands and Shell Scripting. I also have experience of building Agentic solutions and possess in-depth understanding on working and applications of GenAI (especially Diffusion Models). I enjoy exploring new technologies and designing solutions for complex problems and doing something new.",
 };
 
 export const links = {
@@ -33,7 +34,7 @@ export const education: Education[] = [
   },
   {
     institution: "D.A.V Public School, Patna (CBSE)",
-    detail: "Matriculate (Class X) — 97.40%",
+    detail: "Matriculation (Class X) — 97.40%",
     dates: "2020",
   },
 ];
